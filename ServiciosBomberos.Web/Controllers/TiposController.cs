@@ -12,29 +12,29 @@ namespace ServiciosBomberos.Web.Controllers
 {
     public class TiposController : Controller
     {
-        private readonly DataContext _context;
+        private readonly IRepository repository;
 
-        public TiposController(DataContext context)
+        public TiposController(IRepository repository)
         {
-            _context = context;
+            this.repository = repository;
         }
 
-        // GET: Tipoes
-        public async Task<IActionResult> Index()
+        // GET: Tipos
+        public IActionResult Index()
         {
-            return View(await _context.Tipos.ToListAsync());
+            return View(this.repository.GetTipos());
         }
 
-        // GET: Tipoes/Details/5
-        public async Task<IActionResult> Details(int? id)
+        // GET: Tipos/Details/5
+        public IActionResult Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var tipo = await _context.Tipos
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var tipo = this.repository.GetTipo(id.Value);
+
             if (tipo == null)
             {
                 return NotFound();
@@ -43,37 +43,37 @@ namespace ServiciosBomberos.Web.Controllers
             return View(tipo);
         }
 
-        // GET: Tipoes/Create
+        // GET: Tipos/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Tipoes/Create
+        // POST: Tipos/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nombre,Prioridad")] Tipo tipo)
+        public async Task<IActionResult> Create(Tipo tipo)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(tipo);
-                await _context.SaveChangesAsync();
+                this.repository.AddTipo(tipo);
+                await this.repository.SaveAllAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(tipo);
         }
 
-        // GET: Tipoes/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        // GET: Tipos/Edit/5
+        public IActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var tipo = await _context.Tipos.FindAsync(id);
+            var tipo = this.repository.GetTipo(id.Value);
             if (tipo == null)
             {
                 return NotFound();
@@ -81,28 +81,23 @@ namespace ServiciosBomberos.Web.Controllers
             return View(tipo);
         }
 
-        // POST: Tipoes/Edit/5
+        // POST: Tipos/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Prioridad")] Tipo tipo)
+        public async Task<IActionResult> Edit(Tipo tipo)
         {
-            if (id != tipo.Id)
-            {
-                return NotFound();
-            }
-
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(tipo);
-                    await _context.SaveChangesAsync();
+                    this.repository.UpdateTipo(tipo);
+                    await this.repository.SaveAllAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!TipoExists(tipo.Id))
+                    if (!this.repository.TipoExists(tipo.Id))
                     {
                         return NotFound();
                     }
@@ -116,16 +111,15 @@ namespace ServiciosBomberos.Web.Controllers
             return View(tipo);
         }
 
-        // GET: Tipoes/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        // GET: Tipos/Delete/5
+        public IActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var tipo = await _context.Tipos
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var tipo = this.repository.GetTipo(id.Value);
             if (tipo == null)
             {
                 return NotFound();
@@ -134,20 +128,16 @@ namespace ServiciosBomberos.Web.Controllers
             return View(tipo);
         }
 
-        // POST: Tipoes/Delete/5
+        // POST: Tipos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var tipo = await _context.Tipos.FindAsync(id);
-            _context.Tipos.Remove(tipo);
-            await _context.SaveChangesAsync();
+            var tipo = this.repository.GetTipo(id);
+            this.repository.RemoveTipo(tipo);
+            await this.repository.SaveAllAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool TipoExists(int id)
-        {
-            return _context.Tipos.Any(e => e.Id == id);
-        }
     }
 }
