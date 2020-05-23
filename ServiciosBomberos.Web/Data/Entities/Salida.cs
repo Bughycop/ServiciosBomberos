@@ -8,13 +8,26 @@
     {
         public int Id { get; set; }
 
-        //[Display(Name ="Es Retén")]
-        //public bool EsReten1 { get; set; }
+        [Display(Name ="Dia de la Salida")]
 
-        //[Display(Name ="Es Retén")]
-        //public bool EsReten2 { get; set; }
+        public DateTime DiaSalida { get; set; }
+
+        [Display(Name ="Bombero")]
+        [MaxLength(50)]
+        public string Bombero1 { get; set; }
+
+        [Display(Name = "Es Retén?")]
+        public bool EsReten1 { get; set; }
+
+        [Display(Name = "Bombero")]
+        [MaxLength(50)]
+        public string Bombero2 { get; set; }
+
+        [Display(Name = "Es Retén?")]
+        public bool EsReten2 { get; set; }
 
         [Display(Name ="Tipo de Salida")]
+        [Required]
         public Tipo TipoSalida { get; set; }
 
         [Display(Name ="Descripción")]

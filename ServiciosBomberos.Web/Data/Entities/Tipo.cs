@@ -5,12 +5,16 @@
 
     public class Tipo
     {
-        public int Id { get; set; }
+       public int Id { get; set; }
 
-        [Display(Name ="Tipo de Salida")]
+        [Required]
+        [MaxLength(50, ErrorMessage = "El campo {0} sólo puede contener {1} caracteres")]
+        [Display(Name = "Tipo de Salida")]
         public string Nombre { get; set; }
 
-        [Display(Name ="Prioridad")]
+        [Required]
+        [MaxLength(50,ErrorMessage ="El campo {0} sólo puede contener {1} caracteres")]
+        [Display(Name = "Prioridad")]
         public string Prioridad { get; set; }
     }
 }
