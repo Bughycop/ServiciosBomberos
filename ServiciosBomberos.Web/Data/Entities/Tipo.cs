@@ -3,7 +3,7 @@
     using System;
     using System.ComponentModel.DataAnnotations;
 
-    public class Tipo
+    public class Tipo : IEntity
     {
        public int Id { get; set; }
 
@@ -16,5 +16,7 @@
         [MaxLength(50,ErrorMessage ="El campo {0} sólo puede contener {1} caracteres")]
         [Display(Name = "Prioridad")]
         public string Prioridad { get; set; }
+
+        public User User { get; set; }
     }
 }

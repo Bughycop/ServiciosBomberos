@@ -3,17 +3,21 @@
     using System;
     using System.Linq;
     using System.Threading.Tasks;
-    using Microsoft.EntityFrameworkCore.Internal;
     using Entities;
+    using Helpers;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.EntityFrameworkCore.Internal;
 
     public class SeedDb
     {
         private readonly DataContext context;
-        private Random random;
+        private readonly IUserHelper userHelper;
+        private readonly Random random;
 
-        public SeedDb(DataContext context)
+        public SeedDb(DataContext context, IUserHelper userHelper)
         {
             this.context = context;
+            this.userHelper = userHelper;
             this.random = new Random();
         }
 
@@ -21,21 +25,43 @@
         {
             await this.context.Database.EnsureCreatedAsync();
 
+            var user = await this.userHelper.GetUserByEmailAsync("bughycop@gmail.com");
+            if (user == null)
+            {
+                user = new User
+                {
+                    Nombre = "Jose",
+                    PrimerApellido = "Robert",
+                    SegundoApellido = "Janer",
+                    Email = "bughycop@gmail.com",
+                    UserName = "bughycop@gmail.com",
+                    PhoneNumber = "630817017"
+                };
+
+                var result = await this.userHelper.AddUserAsync(user, "123456");
+                if (result != IdentityResult.Success)
+                {
+                    throw new InvalidOperationException("No se pudo crear el Usuario en Seeder");
+                }
+            }
+
+
             if (!this.context.Tipos.Any())
             {
-                this.AddTipo("ABEJAS", "BAJA");
-                this.AddTipo("ABRIR PUERTA", "MEDIA");
-                this.AddTipo("INCENDIO DOMICILIO", "ALTA");
+                this.AddTipo("ABEJAS", "BAJA", user);
+                this.AddTipo("ABRIR PUERTA", "MEDIA", user);
+                this.AddTipo("INCENDIO DOMICILIO", "ALTA", user);
                 await this.context.SaveChangesAsync();
             };
         }
 
-        private void AddTipo(string nombre, string prioridad)
+        private void AddTipo(string nombre, string prioridad, User user)
         {
-            this.context.Tipos.Add(new Tipo 
+            this.context.Tipos.Add(new Tipo
             {
                 Nombre = nombre,
-                Prioridad = prioridad
+                Prioridad = prioridad,
+                User = user
             });
         }
     }

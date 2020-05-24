@@ -1,28 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using ServiciosBomberos.Web.Data;
-using ServiciosBomberos.Web.Data.Entities;
-
-namespace ServiciosBomberos.Web.Controllers
+﻿namespace ServiciosBomberos.Web.Controllers
 {
+    using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore;
+    using Data;
+    using Data.Entities;
+    using Helpers;
+
     public class TiposController : Controller
     {
-        private readonly IRepository repository;
+        private readonly ITipoRepository tipoRepository;
+        private readonly IUserHelper userHelper;
 
-        public TiposController(IRepository repository)
+        public TiposController(ITipoRepository tipoRepository, IUserHelper userHelper)
         {
-            this.repository = repository;
+            this.tipoRepository = tipoRepository;
+            this.userHelper = userHelper;
         }
 
         // GET: Tipos
         public IActionResult Index()
         {
-            return View(this.repository.GetTipos());
+            return View(this.tipoRepository.GetAll());
         }
 
         // GET: Tipos/Details/5
@@ -33,7 +32,7 @@ namespace ServiciosBomberos.Web.Controllers
                 return NotFound();
             }
 
-            var tipo = this.repository.GetTipo(id.Value);
+            var tipo = this.tipoRepository.GetByIdAsync(id.Value);
 
             if (tipo == null)
             {
@@ -58,22 +57,23 @@ namespace ServiciosBomberos.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                this.repository.AddTipo(tipo);
-                await this.repository.SaveAllAsync();
+                //TODO: Cambiar por el Usuario Logueado
+                tipo.User = await this.userHelper.GetUserByEmailAsync("bughycop@gmail.com");
+                await this.tipoRepository.CreateAsync(tipo);
                 return RedirectToAction(nameof(Index));
             }
             return View(tipo);
         }
 
         // GET: Tipos/Edit/5
-        public IActionResult Edit(int? id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var tipo = this.repository.GetTipo(id.Value);
+            var tipo = await this.tipoRepository.GetByIdAsync(id.Value);
             if (tipo == null)
             {
                 return NotFound();
@@ -92,12 +92,13 @@ namespace ServiciosBomberos.Web.Controllers
             {
                 try
                 {
-                    this.repository.UpdateTipo(tipo);
-                    await this.repository.SaveAllAsync();
+                    //TODO: Cambiar por el Usuario Logueado
+                    tipo.User = await this.userHelper.GetUserByEmailAsync("bughycop@gmail.com");
+                    await this.tipoRepository.UpdateAsync(tipo);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!this.repository.TipoExists(tipo.Id))
+                    if (!await this.tipoRepository.ExistAsync(tipo.Id))
                     {
                         return NotFound();
                     }
@@ -112,14 +113,14 @@ namespace ServiciosBomberos.Web.Controllers
         }
 
         // GET: Tipos/Delete/5
-        public IActionResult Delete(int? id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var tipo = this.repository.GetTipo(id.Value);
+            var tipo = await this.tipoRepository.GetByIdAsync(id.Value);
             if (tipo == null)
             {
                 return NotFound();
@@ -133,9 +134,8 @@ namespace ServiciosBomberos.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var tipo = this.repository.GetTipo(id);
-            this.repository.RemoveTipo(tipo);
-            await this.repository.SaveAllAsync();
+            var tipo = await this.tipoRepository.GetByIdAsync(id);
+            await this.tipoRepository.DeleteAsync(tipo);
             return RedirectToAction(nameof(Index));
         }
 

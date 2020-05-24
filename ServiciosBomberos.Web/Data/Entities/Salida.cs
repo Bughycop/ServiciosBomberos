@@ -4,7 +4,7 @@
     using System.ComponentModel.DataAnnotations;
     using System.Net.NetworkInformation;
 
-    public class Salida
+    public class Salida : IEntity
     {
         public int Id { get; set; }
 
@@ -32,5 +32,7 @@
 
         [Display(Name ="Descripción")]
         public string Descripcion { get; set; }
+
+        public User User { get; set; }
     }
 }

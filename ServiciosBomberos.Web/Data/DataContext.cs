@@ -1,9 +1,10 @@
 ﻿namespace ServiciosBomberos.Web.Data
 {
+    using Entities;
+    using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
-    using ServiciosBomberos.Web.Data.Entities;
 
-    public class DataContext : DbContext
+    public class DataContext : IdentityDbContext<User>
     {
         public DbSet<Tipo> Tipos { get; set; }
         public DbSet<Salida> Salidas { get; set; }
