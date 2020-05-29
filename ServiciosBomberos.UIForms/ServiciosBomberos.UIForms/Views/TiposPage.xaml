@@ -12,9 +12,34 @@
             BindingContext="{Binding Tipos}"
             Padding="8">
             <ListView
+                IsRefreshing="{Binding IsRefreshing}"
                 HasUnevenRows="True"
                 ItemsSource="{Binding Tipos}">
-                
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label
+                                    FontSize="Medium"
+                                    FontAttributes="Bold"
+                                    Grid.Column="0"
+                                    Text="{Binding Nombre}">
+                                </Label>
+                                <Label
+                                    FontSize="Medium"
+                                    FontAttributes="Bold"
+                                    Grid.Column="1"
+                                    Text="{Binding Prioridad}"
+                                    TextColor="Navy">
+                                </Label>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
             </ListView>
         </StackLayout>
     </ContentPage.Content>
