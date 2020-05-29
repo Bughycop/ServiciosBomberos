@@ -1,5 +1,6 @@
 ﻿namespace ServiciosBomberos.Web.Controllers
 {
+    using System.Linq;
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
@@ -21,7 +22,7 @@
         // GET: Tipos
         public IActionResult Index()
         {
-            return View(this.tipoRepository.GetAll());
+            return View(this.tipoRepository.GetAll().OrderBy(t=>t.Nombre));
         }
 
         // GET: Tipos/Details/5

@@ -1,16 +1,17 @@
-﻿using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-
-namespace ServiciosBomberos.UIForms
+﻿namespace ServiciosBomberos.UIForms
 {
+    using ServiciosBomberos.UIForms.ViewModels;
+    using Views;
+    using Xamarin.Forms;
+
     public partial class App : Application
     {
         public App()
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainViewModel.GetInstance().Login = new LoginViewModel();
+            this.MainPage = new NavigationPage(new LoginPage());
         }
 
         protected override void OnStart()

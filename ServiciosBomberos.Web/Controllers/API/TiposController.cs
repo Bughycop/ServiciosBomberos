@@ -1,7 +1,7 @@
 ﻿namespace ServiciosBomberos.Web.Controllers.API
 {
     using Microsoft.AspNetCore.Mvc;
-    using ServiciosBomberos.Web.Data;
+    using Data;
 
     [Route("api/[Controller]")]
     public class TiposController : Controller
@@ -17,7 +17,7 @@
         [HttpGet]
         public IActionResult GetTipos()
         {
-            return Ok(this.tipoRepository.GetAll());
+            return Ok(this.tipoRepository.GetAllWithUsers());
         }
 
         #endregion
