@@ -1,0 +1,59 @@
+﻿@model ServiciosBomberos.Web.Models.RegisterNewUserViewModel
+
+@{
+    ViewData["Title"] = "Registrar";
+}
+
+<h2>Registre nuevo Usuario</h2>
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly"></div>
+
+            <div class="form-group">
+                <label asp-for="Nombre">Nombre</label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-warning"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="PrimerApellido">Primer Apellido</label>
+                <input asp-for="PrimerApellido" class="form-control" />
+                <span asp-validation-for="PrimerApellido" class="text-warning"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="SegundoApellido">Segundo Apellido</label>
+                <input asp-for="SegundoApellido" class="form-control" />
+                <span asp-validation-for="SegundoApellido" class="text-warning"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="UserName">Nombre de Usuario</label>
+                <input asp-for="UserName" type="password" class="form-control" />
+                <span asp-validation-for="UserName" class="text-warning"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Password">Contraseña</label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-warning"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Confirm">Confirme Contraseña</label>
+                <input asp-for="Confirm" class="form-control" />
+                <span asp-validation-for="Confirm" class="text-warning"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Registre nuevo Usuario" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -2,12 +2,14 @@
 {
     using System.Linq;
     using System.Threading.Tasks;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.EntityFrameworkCore;
     using Data;
     using Data.Entities;
     using Helpers;
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore;
 
+    [Authorize]
     public class TiposController : Controller
     {
         private readonly ITipoRepository tipoRepository;
@@ -22,7 +24,7 @@
         // GET: Tipos
         public IActionResult Index()
         {
-            return View(this.tipoRepository.GetAll().OrderBy(t=>t.Nombre));
+            return View(this.tipoRepository.GetAll().OrderBy(t => t.Nombre));
         }
 
         // GET: Tipos/Details/5
@@ -58,8 +60,7 @@
         {
             if (ModelState.IsValid)
             {
-                //TODO: Cambiar por el Usuario Logueado
-                tipo.User = await this.userHelper.GetUserByEmailAsync("bughycop@gmail.com");
+                tipo.User = await this.userHelper.GetUserByEmailAsync(this.User.Identity.Name);
                 await this.tipoRepository.CreateAsync(tipo);
                 return RedirectToAction(nameof(Index));
             }
@@ -93,8 +94,7 @@
             {
                 try
                 {
-                    //TODO: Cambiar por el Usuario Logueado
-                    tipo.User = await this.userHelper.GetUserByEmailAsync("bughycop@gmail.com");
+                    tipo.User = await this.userHelper.GetUserByEmailAsync(this.User.Identity.Name);
                     await this.tipoRepository.UpdateAsync(tipo);
                 }
                 catch (DbUpdateConcurrencyException)
