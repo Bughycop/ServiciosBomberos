@@ -10,24 +10,35 @@ namespace ServiciosBomberos.Web.Helpers
 {
     public class UserHelper : IUserHelper
     {
+        #region Atributos
         private readonly UserManager<User> userManager;
         private readonly SignInManager<User> signInManager;
+        #endregion
 
+        #region Constructores
         public UserHelper(
-            UserManager<User> userManager,
-            SignInManager<User> signInManager)
+    UserManager<User> userManager,
+    SignInManager<User> signInManager)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
         }
+        #endregion
+
+        #region Metodos
         public async Task<IdentityResult> AddUserAsync(User user, string password)
         {
             return await this.userManager.CreateAsync(user, password);
         }
 
+        public async Task<IdentityResult> ChangePasswordAsync(User user, string oldPassword, string newPassword)
+        {
+            return await this.userManager.ChangePasswordAsync(user, oldPassword, newPassword);
+        }
+
         public async Task<User> GetUserByEmailAsync(string email)
         {
-             return await this.userManager.FindByEmailAsync(email);
+            return await this.userManager.FindByEmailAsync(email);
         }
 
         public async Task<SignInResult> LoginAsync(LoginViewModel model)
@@ -43,5 +54,11 @@ namespace ServiciosBomberos.Web.Helpers
         {
             await this.signInManager.SignOutAsync();
         }
+
+        public async Task<IdentityResult> UpdateUserAsync(User user)
+        {
+            return await this.userManager.UpdateAsync(user);
+        } 
+        #endregion
     }
 }

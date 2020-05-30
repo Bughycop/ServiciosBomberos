@@ -6,6 +6,7 @@
     using Helpers;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.Infrastructure;
     using Models;
 
     public class AccountController : Controller
@@ -67,6 +68,7 @@
         }
 
         //POST: Account/Register
+        [HttpPost]
         public async Task<IActionResult> Register(RegisterNewUserViewModel model)
         {
             if (this.ModelState.IsValid)
@@ -114,7 +116,68 @@
             return this.View(model);
         }
 
+        // GET: Account/ChangeUser
+        public async Task<IActionResult> ChangeUser()
+        {
+            var user = await this.userHelper.GetUserByEmailAsync(this.User.Identity.Name);
+            var model = new ChangeUserViewModel();
+            if (user != null)
+            {
+                model.Nombre = user.Nombre;
+                model.PrimerApellido = user.PrimerApellido;
+                model.SegundoApellido = user.SegundoApellido;
+            }
 
+            return this.View(model);
+        }
+
+        //POST: Account/ChangeUser
+        [HttpPost]
+        public async Task<IActionResult> ChangeUser(ChangeUserViewModel model)
+        {
+            if (this.ModelState.IsValid)
+            {
+                var user = await this.userHelper.GetUserByEmailAsync(this.User.Identity.Name);
+                if(user != null)
+                {
+                    user.Nombre = model.Nombre;
+                    user.PrimerApellido = model.PrimerApellido;
+                    user.SegundoApellido = model.SegundoApellido;
+                    var response = await this.userHelper.UpdateUserAsync(user);
+                    if (response.Succeeded)
+                    {
+                        this.ViewBag.UserMessage = "Usuario actualizado!";
+                    }
+                    else
+                    {
+                        this.ModelState.AddModelError(string.Empty, response.Errors.FirstOrDefault().Description);
+                    }
+                }
+                else
+                {
+                    this.ModelState.AddModelError(string.Empty, "Usuario no encontrado");
+                }                
+            }
+
+            return this.View(model);
+        }
+
+        //GET: Account/ChangePassword
+        public IActionResult ChangePassword()
+        {
+            return this.View();
+        }
+
+        //POST: Account/ChangePassword
+        //[HttpPost]
+        //public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model)
+        //{
+        //    if (this.ModelState.IsValid)
+        //    {
+        //        var user = await this.userHelper.GetUserByEmailAsync(this.User.Identity.Name);
+
+        //    }
+        //}
         #endregion
     }
 }

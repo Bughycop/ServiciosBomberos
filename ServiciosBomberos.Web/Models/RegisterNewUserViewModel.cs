@@ -23,6 +23,7 @@
 
         [Required]
         [Compare("Password")]
+        [Display(Name ="Confirme Password")]
         public string Confirm { get; set; }
     }
 }
