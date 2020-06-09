@@ -247,6 +247,10 @@
             return this.BadRequest();
         }
 
+        public IActionResult NotAutorized()
+        {
+            return this.View();
+        }
         #endregion
     }
 }

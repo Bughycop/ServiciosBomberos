@@ -9,7 +9,6 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
 
-    [Authorize]
     public class TiposController : Controller
     {
         private readonly ITipoRepository tipoRepository;
@@ -22,30 +21,33 @@
         }
 
         // GET: Tipos
+        [Authorize]
         public IActionResult Index()
         {
             return View(this.tipoRepository.GetAll().OrderBy(t => t.Nombre));
         }
 
         // GET: Tipos/Details/5
+        [Authorize]
         public IActionResult Details(int? id)
         {
             if (id == null)
             {
-                return NotFound();
+                return new NotFoundViewResult("TipoNotFound");
             }
 
             var tipo = this.tipoRepository.GetByIdAsync(id.Value);
 
             if (tipo == null)
             {
-                return NotFound();
+                return new NotFoundViewResult("TipoNotFound");
             }
 
             return View(tipo);
         }
 
         // GET: Tipos/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -68,17 +70,18 @@
         }
 
         // GET: Tipos/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
-                return NotFound();
+                return new NotFoundViewResult("TipoNotFound");
             }
 
             var tipo = await this.tipoRepository.GetByIdAsync(id.Value);
             if (tipo == null)
             {
-                return NotFound();
+                return new NotFoundViewResult("TipoNotFound");
             }
             return View(tipo);
         }
@@ -101,7 +104,7 @@
                 {
                     if (!await this.tipoRepository.ExistAsync(tipo.Id))
                     {
-                        return NotFound();
+                        return new NotFoundViewResult("TipoNotFound");
                     }
                     else
                     {
@@ -114,17 +117,18 @@
         }
 
         // GET: Tipos/Delete/5
+        [Authorize(Roles ="Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
-                return NotFound();
+                return new NotFoundViewResult("TipoNotFound");
             }
 
             var tipo = await this.tipoRepository.GetByIdAsync(id.Value);
             if (tipo == null)
             {
-                return NotFound();
+                return new NotFoundViewResult("TipoNotFound");
             }
 
             return View(tipo);
@@ -140,5 +144,9 @@
             return RedirectToAction(nameof(Index));
         }
 
+        public IActionResult TipoNotFound()
+        {
+            return this.View();
+        }
     }
 }

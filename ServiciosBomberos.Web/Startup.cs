@@ -13,6 +13,7 @@ namespace ServiciosBomberos.Web
     using Helpers;
     using Microsoft.IdentityModel.Tokens;
     using System.Text;
+    using Microsoft.CodeAnalysis.Options;
 
     public class Startup
     {
@@ -62,6 +63,12 @@ namespace ServiciosBomberos.Web
             services.AddScoped<ISalidaRepository, SalidaRepository>();
             services.AddScoped<IUserHelper, UserHelper>();
 
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/Account/NotAutorized";
+                options.AccessDeniedPath = "/Account/NotAutorized";
+            });
+
             services.AddControllersWithViews();
         }
 
@@ -78,6 +85,8 @@ namespace ServiciosBomberos.Web
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            app.UseStatusCodePagesWithReExecute("/error/{0}");
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseAuthentication();
