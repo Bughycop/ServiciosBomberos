@@ -29,14 +29,14 @@
 
         // GET: Tipos/Details/5
         [Authorize]
-        public IActionResult Details(int? id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new NotFoundViewResult("TipoNotFound");
             }
 
-            var tipo = this.tipoRepository.GetByIdAsync(id.Value);
+            var tipo = await this.tipoRepository.GetByIdAsync(id.Value);
 
             if (tipo == null)
             {

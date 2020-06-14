@@ -8,6 +8,7 @@
     using System.Threading.Tasks;
     using Data.Entities;
     using Helpers;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
@@ -71,6 +72,7 @@
         }
 
         //GET: Account/Register
+        [Authorize(Roles = "Admin")]
         public IActionResult Register()
         {
             return this.View();
@@ -126,6 +128,7 @@
         }
 
         // GET: Account/ChangeUser
+        [Authorize]
         public async Task<IActionResult> ChangeUser()
         {
             var user = await this.userHelper.GetUserByEmailAsync(this.User.Identity.Name);
@@ -172,6 +175,7 @@
         }
 
         //GET: Account/ChangePassword
+        [Authorize]
         public IActionResult ChangePassword()
         {
             return this.View();

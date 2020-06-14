@@ -2,14 +2,12 @@
 {
     using System;
     using System.ComponentModel.DataAnnotations;
-    using System.Net.NetworkInformation;
 
     public class Salida : IEntity
     {
         public int Id { get; set; }
 
         [Display(Name ="Dia de la Salida")]
-
         public DateTime DiaSalida { get; set; }
 
         [Display(Name ="Bombero")]
@@ -28,7 +26,7 @@
 
         [Display(Name ="Tipo de Salida")]
         [Required]
-        public Tipo TipoSalida { get; set; }
+        public string TipoSalida { get; set; }
 
         [Display(Name ="Descripción")]
         public string Descripcion { get; set; }

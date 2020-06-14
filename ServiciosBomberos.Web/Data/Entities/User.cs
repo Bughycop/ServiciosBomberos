@@ -10,5 +10,9 @@ namespace ServiciosBomberos.Web.Data.Entities
         public string PrimerApellido { get; set; }
 
         public string SegundoApellido { get; set; }
+
+        public string NombreCompleto { get { return $"{this.Nombre} {this.PrimerApellido} {this.SegundoApellido}"; } }
+
+        public string Malnom { get { return $"{this.Nombre} {this.PrimerApellido}"; }  }
     }
 }
