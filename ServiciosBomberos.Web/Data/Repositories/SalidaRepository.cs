@@ -2,10 +2,9 @@
 {
     using System.Collections.Generic;
     using System.Linq;
-    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc.Rendering;
-    using ServiciosBomberos.Web.Data.Entities;
-    using ServiciosBomberos.Web.Helpers;
+    using Data.Entities;
+    using Helpers;
 
     public class SalidaRepository : GenericRepository<Salida>, ISalidaRepository
     {
@@ -17,41 +16,6 @@
             this.context = context;
             this.userHelper = userHelper;
         }
-
-        //NUEVO (no se si es necesario)
-        //public async Task AdItemToSalidaAsync(Salida model, string username)
-        //{
-        //    var user = await this.userHelper.GetUserByEmailAsync(username);
-
-        //    if (user == null)
-        //    {
-        //        return;
-        //    }
-
-        //    var salida = await this.context.Salidas.FindAsync(model.Id);
-        //    if (salida == null)
-        //    {
-        //        salida = new Salida
-        //        {
-        //            DiaSalida = model.DiaSalida,
-        //            TipoSalida = model.TipoSalida,
-        //            Bombero1 = model.Bombero1,
-        //            EsReten1 = model.EsReten1,
-        //            Bombero2 = model.Bombero2,
-        //            EsReten2 = model.EsReten2,
-        //            Descripcion = model.Descripcion,
-        //            User = user
-        //        };
-
-        //        this.context.Salidas.Add(salida);
-        //    }
-        //    else
-        //    {
-        //        return;
-        //    }
-
-        //    await this.context.SaveChangesAsync();
-        //}
 
         public IEnumerable<SelectListItem> GetComboUsers()
         {

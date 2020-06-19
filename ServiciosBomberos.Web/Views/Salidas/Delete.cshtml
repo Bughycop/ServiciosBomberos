@@ -1,62 +1,46 @@
-﻿@model ServiciosBomberos.Web.Models.AddSalidaViewModel
-
+﻿@model ServiciosBomberos.Web.Data.Entities.Salida
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Delete";
 }
 
-<h1>AÑADIR SERVICIO DE SALIDA</h1>
-
-<h3>SALIDA</h3>
-
-<hr />
+<h1>Eliminar salida</h1>
 
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Delete">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
 
             <div class="form-group">
                 <label asp-for="DiaSalida" class="control-label"></label>
-                <input asp-for="DiaSalida" type="date" class="form-control" />
+                <input asp-for="DiaSalida" class="form-control" />
                 <span asp-validation-for="DiaSalida" class="text-danger"></span>
             </div>
 
             <div class="form-group">
                 <label asp-for="Bombero1" class="control-label"></label>
-                <select asp-for="Bombero1" asp-items="Model.Bomberos" class="form-control"></select>
+                <input asp-for="Bombero1" class="form-control" />
                 <span asp-validation-for="Bombero1" class="text-danger"></span>
             </div>
 
-            <div class="checkbox">
+            <div class="form-group">
                 <input asp-for="EsReten1" /> @Html.DisplayNameFor(m => m.EsReten1)
             </div>
 
             <div class="form-group">
                 <label asp-for="Bombero2" class="control-label"></label>
-                <select asp-for="Bombero2" asp-items="Model.Bomberos2" class="form-control"></select>
+                <input asp-for="Bombero2" class="form-control" />
                 <span asp-validation-for="Bombero2" class="text-danger"></span>
             </div>
 
-            <div class="checkbox">
+            <div>
                 <input asp-for="EsReten2" /> @Html.DisplayNameFor(m => m.EsReten2)
             </div>
 
             <div class="form-group">
-                <label asp-for="HoraSalida" class="control-label"></label>
-                <input asp-for="HoraSalida" type="time" class="form-control" />
-                <span asp-validation-for="HoraSalida" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="HoraRegreso" class="control-label"></label>
-                <input asp-for="HoraRegreso" type="time" class="form-control" />
-                <span asp-validation-for="HoraRegreso" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
                 <label asp-for="TipoSalida" class="control-label"></label>
-                <select asp-for="TipoSalida" asp-items="Model.TiposDeSalida" class="form-control"></select>
-                <span asp-validation-for="TipoSalida" class="text-danger"></span>
+                <input asp-for="TipoSalida" class="form-control" />
+                <span asp-validation-for="DiaSalida" class="text-danger"></span>
             </div>
 
             <div class="form-group">
@@ -66,14 +50,14 @@
             </div>
 
             <div class="form-group">
-                <button type="submit" class="btn btn-success"><i class="fa fa-save"> Añadir</i></button>
-                <a asp-action="Index" class="btn btn-danger"><i class="fa fa-hand-o-left"></i> Volver a la Lista</a>
+                <button type="submit" class="btn btn-danger" >Eliminar <i class="fa fa-check"></i></button>
+                <a asp-action="Index" class="btn btn-success">Volver a la Lista <i class="fa fa-hand-o-left"></i></a>
             </div>
-
         </form>
     </div>
 </div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
 }

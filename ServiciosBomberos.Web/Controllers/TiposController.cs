@@ -11,9 +11,12 @@
 
     public class TiposController : Controller
     {
+        #region Atributos
         private readonly ITipoRepository tipoRepository;
         private readonly IUserHelper userHelper;
+        #endregion
 
+        #region Acciones
         public TiposController(ITipoRepository tipoRepository, IUserHelper userHelper)
         {
             this.tipoRepository = tipoRepository;
@@ -117,7 +120,7 @@
         }
 
         // GET: Tipos/Delete/5
-        [Authorize(Roles ="Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -143,10 +146,14 @@
             await this.tipoRepository.DeleteAsync(tipo);
             return RedirectToAction(nameof(Index));
         }
+        #endregion
 
+        #region Metodos
         public IActionResult TipoNotFound()
         {
             return this.View();
-        }
+        } 
+
+        #endregion
     }
 }

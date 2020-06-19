@@ -29,8 +29,8 @@ namespace ServiciosBomberos.Web
         {
             services.AddIdentity<User, IdentityRole>(cfg =>
             {
-                //cfg.Tokens.AuthenticatorTokenProvider = TokenOptions.DefaultAuthenticatorProvider;
-                //cfg.SignIn.RequireConfirmedEmail = true;
+                cfg.Tokens.AuthenticatorTokenProvider = TokenOptions.DefaultAuthenticatorProvider;
+                cfg.SignIn.RequireConfirmedEmail = true;
                 cfg.User.RequireUniqueEmail = true;
                 cfg.Password.RequireDigit = false;
                 cfg.Password.RequiredUniqueChars = 0;
@@ -39,8 +39,7 @@ namespace ServiciosBomberos.Web
                 cfg.Password.RequireUppercase = false;
                 cfg.Password.RequiredLength = 6;
 
-            })
-            .AddDefaultTokenProviders()
+            }).AddDefaultTokenProviders()
             .AddEntityFrameworkStores<DataContext>();
 
             services.AddAuthentication()
@@ -67,11 +66,12 @@ namespace ServiciosBomberos.Web
             services.AddScoped<ITipoRepository, TipoRepository>();
             services.AddScoped<ISalidaRepository, SalidaRepository>();
             services.AddScoped<IUserHelper, UserHelper>();
+            services.AddScoped<IMailHelper, MailHelper>();
 
             services.ConfigureApplicationCookie(options =>
             {
                 options.LoginPath = "/Account/NotAutorized";
-                options.AccessDeniedPath = "/Account/NotAutorized";
+                options.AccessDeniedPath = "/Account/UserNotAuthorized";
             });
 
             services.AddControllersWithViews();

@@ -29,7 +29,7 @@
             await this.userHelper.CheckRoleAsync("Customer");
 
             //Add user
-            var user = await this.userHelper.GetUserByEmailAsync("bughycop@gmail.com");
+            var user = await this.userHelper.GetUserByEmailAsync("bughybombero@gmail.com");
             if (user == null)
             {
                 user = new User
@@ -37,8 +37,8 @@
                     Nombre = "Jose",
                     PrimerApellido = "Robert",
                     SegundoApellido = "Janer",
-                    Email = "bughycop@gmail.com",
-                    UserName = "bughycop@gmail.com",
+                    Email = "bughybombero@gmail.com",
+                    UserName = "bughybombero@gmail.com",
                     PhoneNumber = "630817017"
                 };
 
@@ -49,6 +49,8 @@
                 }
 
                 await this.userHelper.AddUserToRoleAsync(user, "Admin");
+                var token = await this.userHelper.GenerateEmailConfirmationTokenAsync(user);
+                await this.userHelper.ConfirmEmailAsync(user, token);
             }
 
             var isInRole = await this.userHelper.IsUserInRoleAsync(user, "Admin");

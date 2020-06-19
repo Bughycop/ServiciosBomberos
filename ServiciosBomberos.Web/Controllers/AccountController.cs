@@ -20,19 +20,22 @@
         #region Atributos
         private readonly IUserHelper userHelper;
         private readonly IConfiguration configuration;
+        private readonly IMailHelper mailHelper;
         #endregion
 
         #region Constructores
         public AccountController(
             IUserHelper userHelper,
-            IConfiguration configuration)
+            IConfiguration configuration,
+            IMailHelper mailHelper)
         {
             this.userHelper = userHelper;
             this.configuration = configuration;
+            this.mailHelper = mailHelper;
         }
         #endregion
 
-        #region Metodos
+        #region Acciones
         //GET: Account/Login
         public IActionResult Login()
         {
@@ -103,21 +106,20 @@
                         return this.View(model);
                     }
 
-                    var loginViewModel = new LoginViewModel
-                    {
-                        Password = model.Password,
-                        RememberMe = false,
-                        Username = model.UserName
-                    };
+                    var myToken = await this.userHelper.GenerateEmailConfirmationTokenAsync(user);
+                    var tokenLink = this.Url.Action("ConfirmEmail",
+                        "Account",
+                        new
+                            {
+                                userid = user.Id,
+                                token = myToken
+                            },
+                        protocol: HttpContext.Request.Scheme);
 
-                    var result2 = await this.userHelper.LoginAsync(loginViewModel);
-
-                    if (result2.Succeeded)
-                    {
-                        return this.RedirectToAction("Index", "Home");
-                    }
-
-                    this.ModelState.AddModelError(string.Empty, "El Ususario no pudo iniciar Sesión");
+                    this.mailHelper.SendMail(model.UserName, "Confirmación de correo de Gestion de Bomberos Maó", $"<h1>Bomberos Maó Confirmación de correo</h1>" +
+                        $"Para habilitar el Usuario" +
+                        $"por favor haca click en el link:<br></br><a href= \"{tokenLink}\">Confirme su Email</a>");
+                    this.ViewBag.Message = "Las instrucciones para validar su Usuario han sido enviadas a su Email";
                     return this.View(model);
                 }
 
@@ -125,6 +127,27 @@
 
             }
             return this.View(model);
+        }
+
+        public async Task<IActionResult> ConfirmEmail(string userId,string token)
+        {
+            if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(token))
+            {
+                return this.NotFound();
+            }
+
+            var user = await this.userHelper.GetUserByIdAsync(userId);
+            if (user == null)
+            {
+                return this.NotFound();
+            }
+
+            var result = await this.userHelper.ConfirmEmailAsync(user, token);
+            if (!result.Succeeded)
+            {
+                return this.NotFound();
+            }
+            return View();
         }
 
         // GET: Account/ChangeUser
@@ -208,7 +231,7 @@
             return this.View(model);
         }
 
-        //POST: Account/CreateToken
+        //POST: no tiene vista
         [HttpPost]
         public async Task<IActionResult> CreateToken([FromBody] LoginViewModel model)
         {
@@ -225,9 +248,9 @@
                     {
                         var claims = new[]
                         {
-                            new Claim(JwtRegisteredClaimNames.Sub, user.Email),
-                            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
-                        };
+                    new Claim(JwtRegisteredClaimNames.Sub, user.Email),
+                    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+                };
 
                         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(this.configuration["Tokens:Key"]));
                         var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -252,6 +275,16 @@
         }
 
         public IActionResult NotAutorized()
+        {
+            return this.View();
+        }
+
+        public IActionResult UserNotAuthorized()
+        {
+            return this.View();
+        }
+
+        public IActionResult RecoverPassword()
         {
             return this.View();
         }

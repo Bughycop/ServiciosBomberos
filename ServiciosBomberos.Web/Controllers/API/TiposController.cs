@@ -9,12 +9,16 @@
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class TiposController : Controller
     {
-        private readonly ITipoRepository tipoRepository;
+        #region Atributos
+        private readonly ITipoRepository tipoRepository; 
+        #endregion
 
+        #region Constructor
         public TiposController(ITipoRepository tipoRepository)
         {
             this.tipoRepository = tipoRepository;
-        }
+        } 
+        #endregion
 
         #region Metodos
         [HttpGet]

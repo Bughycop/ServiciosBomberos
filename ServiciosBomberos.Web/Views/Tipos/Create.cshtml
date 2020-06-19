@@ -30,14 +30,43 @@
             </div>
 
             <div class="form-group">
-                <button type="submit" class="btn btn-primary"><i class="fa fa-save"> Añadir</i></button>
-                <a asp-action="Index" class="btn btn-success"><i class="fa fa-hand-o-left"></i> Volver a la Lista</a>
+                <button type="submit" class="btn btn-success"><i class="fa fa-save"> Añadir</i></button>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#volverDialog"><i class="fa fa-hand-o-left"></i> Volver a la Lista</button>
             </div>
         </form>
     </div>
 </div>
 
+<div class="modal fade" id="volverDialog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">CONFIRMAR</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <p>El tipo de servicio no sera añadido,</p>
+                <p>¿DESEA CONTINUAR?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="btnYes">SI <i class="fa fa-thumbs-up"></i></button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">NO <i class="fa fa-thumbs-down"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //Confirmar
+            $("#btnYes").click(function () {
+                window.location.href = '/Tipos/Index';
+            });
+        });
+    </script>
 }
