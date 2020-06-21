@@ -21,7 +21,7 @@
         [HttpGet]
         public IActionResult GetSalida()
         {
-            return Ok(this.salidaRepository.GetAll());
+            return Ok(this.salidaRepository.GetAllWithUsers());
         }
         #endregion
     }

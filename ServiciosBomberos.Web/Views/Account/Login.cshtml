@@ -25,14 +25,16 @@
             <div class="form-group">
                 <div class="form-check">
                     <input asp-for="RememberMe" type="checkbox" class="form-check-input" />
-                    <label asp-for="RememberMe" class="form-check-label">¿Recuerdame?</label>
+                    <label asp-for="RememberMe" class="form-check-label">¿Recuerdame?</label> 
                 </div>
-                <span asp-validation-for="RememberMe" class="text-warning"></span>
+                <span asp-validation-for="RememberMe" class="text-warning"></span>  
             </div>
-
+            <div>
+                <a asp-action="RecoverPassword" class="btn btn-link">¿Olvidó su contraseña?</a>
+            </div>
+            <br />
             <div class="form-group">
                 <input type="submit" value="Iniciar Sesión" class="btn btn-success" />
-                <a asp-action="RecoverP0assword" class="btn btn-link">¿Olvidó su contraseña?</a>
             </div>
         </form>
     </div>

@@ -5,14 +5,14 @@
 
     public class ResetPasswordViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "El campo {0} es obligatorio")]
         public string UsernName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "El campo {0} es obligatorio")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "El campo {0} es obligatorio")]
         [DataType(DataType.Password)]
         [Compare("Password")]
         public string PasswordCompare { get; set; }

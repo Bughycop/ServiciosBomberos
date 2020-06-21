@@ -5,15 +5,15 @@
 
     public class ChangePasswordViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "El campo {0} es obligatorio")]
         [Display(Name ="Password actual")]
         public string OldPassword { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "El campo {0} es obligatorio")]
         [Display(Name ="Nuevo Password")]
         public string NewPassword { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "El campo {0} es obligatorio")]
         [Compare("NewPassword")]
         [Display(Name ="Confirme Password")]
         public string Confirm { get; set; }

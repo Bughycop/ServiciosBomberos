@@ -1,8 +1,11 @@
 ﻿namespace ServiciosBomberos.Web.Helpers
 {
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
     using Data.Entities;
     using Microsoft.AspNetCore.Identity;
+    using Microsoft.EntityFrameworkCore;
     using Models;
 
     public class UserHelper : IUserHelper
@@ -58,6 +61,11 @@
             return await this.userManager.ConfirmEmailAsync(user, token);
         }
 
+        public async Task DeleteUserAsync(User user)
+        {
+            await this.userManager.DeleteAsync(user);
+        }
+
         public async Task<string> GenerateEmailConfirmationTokenAsync(User user)
         {
             return await this.userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -66,6 +74,14 @@
         public async Task<string> GeneratePasswordResetTokenAsync(User user)
         {
             return await this.userManager.GeneratePasswordResetTokenAsync(user);
+        }
+
+        public async Task<List<User>> GetAllUsersAsync()
+        {
+            return await this.userManager.Users.OrderBy(u => u.Nombre)
+                .ThenBy(u => u.PrimerApellido)
+                .ThenBy(u => u.SegundoApellido)
+                .ToListAsync();
         }
 
         public async Task<User> GetUserByEmailAsync(string email)
@@ -95,6 +111,11 @@
         public async Task LogoutAsync()
         {
             await this.signInManager.SignOutAsync();
+        }
+
+        public async Task RemoveUserFromRoleAsync(User user, string roleName)
+        {
+            await this.userManager.RemoveFromRoleAsync(user, roleName);
         }
 
         public async Task<IdentityResult> ResetPasswordAsync(User user, string token, string password)

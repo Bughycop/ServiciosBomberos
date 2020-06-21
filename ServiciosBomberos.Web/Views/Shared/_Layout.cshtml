@@ -19,9 +19,9 @@
                 </button>
                 <div class="navbar-collapse collapse">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
+                        @*<li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
+                        </li>*@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
@@ -43,7 +43,8 @@
                             <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Account" asp-action="Logout">Cerrar Sesión</a></li>
                             @if (this.User.IsInRole("Admin"))
                             {
-                                <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Account" asp-action="Register">Registrar Usuario</a></li>
+                                @*<li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Account" asp-action="Register">Registrar Usuario</a></li>*@
+                                <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Account" asp-action="Index">Administración de Usuarios</a></li>
                             }
 
                         }

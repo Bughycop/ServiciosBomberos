@@ -5,6 +5,7 @@
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Data.Entities;
     using Helpers;
+    using Microsoft.EntityFrameworkCore;
 
     public class SalidaRepository : GenericRepository<Salida>, ISalidaRepository
     {
@@ -15,6 +16,11 @@
         {
             this.context = context;
             this.userHelper = userHelper;
+        }
+
+        public IQueryable GetAllWithUsers()
+        {
+            return this.context.Salidas.Include(s => s.User).OrderByDescending(s => s.Id);
         }
 
         public IEnumerable<SelectListItem> GetComboUsers()

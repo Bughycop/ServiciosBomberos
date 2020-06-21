@@ -10,6 +10,7 @@
 
         public TiposViewModel Tipos { get; set; }
 
+        public SalidasViewModel Salidas { get; set; }
         #endregion
 
         #region Constructores

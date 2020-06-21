@@ -4,10 +4,10 @@
 
     public class ChangeUserViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "El campo {0} es obligatorio")]
         public string Nombre { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "El campo {0} es obligatorio")]
         [Display(Name = "Primer Apellido")]
         public string PrimerApellido { get; set; }
 
