@@ -153,6 +153,7 @@
                 return new NotFoundViewResult("SalidaNotFound");
             }
 
+
             var salida = await this.salidaRepository.GetByIdAsync(id.Value);
             if (salida == null)
             {

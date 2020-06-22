@@ -284,10 +284,138 @@
             return this.View();
         }
 
+        //Account/RecoverPassword
         public IActionResult RecoverPassword()
         {
             return this.View();
         }
+
+        //Post:Account/RecoverPassword
+        [HttpPost]
+        public async Task<IActionResult> RecoverPassword(RecoverPasswordViewModel model)
+        {
+            if (this.ModelState.IsValid)
+            {
+                var user = await this.userHelper.GetUserByEmailAsync(model.Email);
+                if (user == null)
+                {
+                    ModelState.AddModelError(string.Empty, "El Correo no corresponde a un usuario registrado");
+                    return this.View(model);
+                }
+
+                var myToken = await this.userHelper.GeneratePasswordResetTokenAsync(user);
+                var link = this.Url.Action(
+                    "ResetPassword",
+                    "Account",
+                    new { token = myToken },
+                    protocol: HttpContext.Request.Scheme);
+                var mailSender = new MailHelper(configuration);
+                mailSender.SendMail(model.Email, "Recuperar password Servicios Bomberos", $"<h1>Recupere la contraseña<h1/>" +
+                    $"Para recuperar el password haga click en el siguiente enlace:</br></br>" +
+                    $"<a href=\"{link}\">Reset password</a>");
+                this.ViewBag.Message = "Las instrucciones para recuperar la contraseña han sido enviadas a su correo electrónico";
+                return this.View();
+            }
+            return this.View(model);
+        }
+
+        //Get:Account/ResetPassword
+        public IActionResult ResetPassword(string token)
+        {
+            return this.View();
+        }
+
+        //Post:Account/ResetPassword
+        [HttpPost]
+        public async Task<IActionResult> ResetPassword(ResetPasswordViewModel model)
+        {
+            var user = await this.userHelper.GetUserByEmailAsync(model.UsernName);
+            if (user != null)
+            {
+                var result = await this.userHelper.ResetPasswordAsync(user, model.Token, model.Password);
+                if (result.Succeeded)
+                {
+                    this.ViewBag.Message = "La contraseña ha sido recuperada con éxtito";
+                    return this.View();
+                }
+                this.ViewBag.Message = "Ha ocurrido un error al recuperar la contraseña";
+                return this.View(model);
+            }
+            this.ViewBag.Message = "Usuario no encontrado...";
+            return this.View(model);
+        }
+
+        #endregion
+        #region Administrador Usuarios
+        //Get: Users
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Index()
+        {
+            var users = await this.userHelper.GetAllUsersAsync();
+            foreach (var user in users)
+            {
+                var myUser = await this.userHelper.GetUserByIdAsync(user.Id);
+                if (myUser != null)
+                {
+                    user.IsAdmin = await this.userHelper.IsUserInRoleAsync(myUser, "Admin");
+                }
+            }
+            return this.View(users);
+        }
+
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> AdminOff(string id)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                return NotFound();
+            }
+
+            var user = await this.userHelper.GetUserByIdAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            await this.userHelper.RemoveUserFromRoleAsync(user, "Admin");
+            return this.RedirectToAction(nameof(Index));
+        }
+
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> AdminOn(string id)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                return NotFound();
+            }
+
+            var user = await this.userHelper.GetUserByIdAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            await this.userHelper.AddUserToRoleAsync(user, "Admin");
+            return this.RedirectToAction(nameof(Index));
+        }
+
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> DeleteUser(string id)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                return NotFound();
+            }
+
+            var user = await this.userHelper.GetUserByIdAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            await this.userHelper.DeleteUserAsync(user);
+            return this.RedirectToAction(nameof(Index));
+        } 
         #endregion
     }
 }

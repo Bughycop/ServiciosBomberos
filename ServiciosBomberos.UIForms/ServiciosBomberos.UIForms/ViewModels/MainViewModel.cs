@@ -1,4 +1,6 @@
-﻿namespace ServiciosBomberos.UIForms.ViewModels
+﻿using ServiciosBomberos.Common.Models;
+
+namespace ServiciosBomberos.UIForms.ViewModels
 {
     public class MainViewModel
     {
@@ -6,10 +8,12 @@
         private static MainViewModel instance;
         #endregion
         #region Propiedades
+        public TokenResponse Token { get; set; }
         public LoginViewModel Login { get; set; }
 
         public TiposViewModel Tipos { get; set; }
 
+        public SalidasViewModel Salidas { get; set; }
         #endregion
 
         #region Constructores

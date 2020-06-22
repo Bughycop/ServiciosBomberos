@@ -28,8 +28,12 @@
                     Placeholder="Enter your Password..."
                     Text="{Binding Password}">
                 </Entry>
+                <ActivityIndicator
+                    IsRunning="{Binding ISRunning}">
+                </ActivityIndicator>
                 <Button
                     Command="{Binding LoginCommand}"
+                    IsEnabled="{Binding IsEnabled}"
                     CornerRadius="6"
                     Text="Login">
                 </Button>
