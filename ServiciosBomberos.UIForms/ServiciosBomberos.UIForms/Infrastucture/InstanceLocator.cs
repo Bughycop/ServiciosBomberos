@@ -1,7 +1,7 @@
-﻿using ServiciosBomberos.UIForms.ViewModels;
-
-namespace ServiciosBomberos.UIForms.Infrastucture
+﻿namespace ServiciosBomberos.UIForms.Infrastucture
 {
+    using ViewModels;
+
     public class InstanceLocator
     {
         public MainViewModel Main { get; set; }

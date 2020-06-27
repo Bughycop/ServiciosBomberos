@@ -39,10 +39,13 @@
         {
             this.IsRefreshing = true;
 
+            var url = Application.Current.Resources["UrlApi"].ToString();
             var response = await this.apiService.GetListAsync<Tipo>(
-                "https://serviciosbomberos.azurewebsites.net",
+                url,
                 "/api",
-                "/Tipos");
+                "/Tipos",
+                "bearer",
+                MainViewModel.GetInstance().Token.Token);
 
             this.IsRefreshing = false;
 

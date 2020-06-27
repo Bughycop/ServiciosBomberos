@@ -12,6 +12,9 @@
             BindingContext="{Binding Login}">
             <StackLayout
                 Padding="8">
+                <Image 
+                    HeightRequest="150"
+                    Source="BomberoFuego"></Image>
                 <Label
                     Text="Email">
                 </Label>
@@ -29,13 +32,17 @@
                     Text="{Binding Password}">
                 </Entry>
                 <ActivityIndicator
-                    IsRunning="{Binding ISRunning}">
+                    IsRunning="{Binding IsRunning}"
+                    VerticalOptions="CenterAndExpand">
                 </ActivityIndicator>
                 <Button
+                    BackgroundColor="Navy"
                     Command="{Binding LoginCommand}"
+                    HeightRequest="46"
                     IsEnabled="{Binding IsEnabled}"
-                    CornerRadius="6"
-                    Text="Login">
+                    CornerRadius="23"
+                    Text="Login"
+                    TextColor="White">
                 </Button>
             </StackLayout>
         </ScrollView>

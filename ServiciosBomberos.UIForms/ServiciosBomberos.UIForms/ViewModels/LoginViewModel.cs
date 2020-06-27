@@ -17,7 +17,7 @@
 
         #region Propiedades
 
-        public bool IsRunning 
+        public bool IsRunning
         {
             get => this.iSRunning;
             set => SetValue(ref this.iSRunning, value);
@@ -40,9 +40,9 @@
         public LoginViewModel()
         {
             this.apiService = new ApiService();
-            this.Email = "bughycop@gmail.com";
+            this.Email = "bughybombero@gmail.com";
             this.Password = "123456";
-            this.isEnabled = true;
+            this.IsEnabled = true;
         }
 
         #endregion
@@ -69,7 +69,7 @@
             }
 
             this.IsRunning = true;
-            this.isEnabled = false;
+            this.IsEnabled = false;
 
             var request = new TokenRequest
             {
@@ -84,8 +84,8 @@
                 "/CreateToken",
                 request);
 
-            this.iSRunning = false;
-            this.isEnabled = false;
+            this.IsRunning = false;
+            this.IsEnabled = true;
 
             if (!response.IsSuccess)
             {
@@ -97,17 +97,11 @@
             var token = (TokenResponse)response.Result;
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.Token = token;
-            mainViewModel.Tipos = new TiposViewModel();
-            await Application.Current.MainPage.Navigation.PushAsync(new TiposPage());
-
-            //await Application.Current.MainPage.DisplayAlert(
-            //    "YUJUUUU!",
-            //    "LO CONSEGUIMOS!",
-            //    "Accept");
-
-            //MainViewModel.GetInstance().Tipos = new TiposViewModel();
+            mainViewModel.Salidas = new SalidasViewModel();
+            //await Application.Current.MainPage.Navigation.PushAsync(new SalidasPage());
+            Application.Current.MainPage = new MasterPage();
         }
-        #endregion
 
+        #endregion
     }
 }

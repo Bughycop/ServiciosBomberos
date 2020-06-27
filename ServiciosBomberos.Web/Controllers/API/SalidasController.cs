@@ -1,9 +1,13 @@
 ﻿namespace ServiciosBomberos.Web.Controllers.API
 {
+    using Microsoft.AspNetCore.Authentication.JwtBearer;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using ServiciosBomberos.Web.Data;
+    using System.Net;
 
     [Route("api/[Controller]")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class SalidasController : Controller
     {
         #region Atributos

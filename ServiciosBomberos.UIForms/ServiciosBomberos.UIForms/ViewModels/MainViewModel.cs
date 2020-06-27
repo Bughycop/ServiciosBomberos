@@ -1,7 +1,8 @@
-﻿using ServiciosBomberos.Common.Models;
-
-namespace ServiciosBomberos.UIForms.ViewModels
+﻿namespace ServiciosBomberos.UIForms.ViewModels
 {
+    using Common.Models;
+    using ServiciosBomberos.UIForms.Views;
+
     public class MainViewModel
     {
         #region Atributos
@@ -9,11 +10,13 @@ namespace ServiciosBomberos.UIForms.ViewModels
         #endregion
         #region Propiedades
         public TokenResponse Token { get; set; }
+
         public LoginViewModel Login { get; set; }
+
+        public SalidasViewModel Salidas { get; set; }
 
         public TiposViewModel Tipos { get; set; }
 
-        public SalidasViewModel Salidas { get; set; }
         #endregion
 
         #region Constructores

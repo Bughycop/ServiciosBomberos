@@ -38,7 +38,7 @@
         [Authorize]
         public IActionResult Index()
         {
-            return this.View(this.salidaRepository.GetAll().OrderByDescending(s => s.Id));
+                  return this.View(this.salidaRepository.GetAll().OrderByDescending(s => s.Id));
         }
 
         //GET: Salidas/Details

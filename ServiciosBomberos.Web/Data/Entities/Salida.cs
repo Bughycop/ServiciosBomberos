@@ -42,8 +42,8 @@
         [Display(Name ="Descripción")]
         public string Descripcion { get; set; }
 
-        [Display(Name ="Total horas")]
-        public TimeSpan TotalHorasSalida { get { return HoraRegreso - HoraSalida; } }
+        //[Display(Name ="Total horas")]
+        //public TimeSpan TotalHorasSalida { get { return HoraRegreso - HoraSalida; } }
 
         public User User { get; set; }
     }

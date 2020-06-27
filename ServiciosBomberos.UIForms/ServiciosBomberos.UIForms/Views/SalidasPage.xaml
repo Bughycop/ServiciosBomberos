@@ -6,14 +6,81 @@
              mc:Ignorable="d"
              x:Class="ServiciosBomberos.UIForms.Views.SalidasPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="Servicios realizados">
+             Title="Servicios Realizados">
     <ContentPage.Content>
         <StackLayout
             BindingContext="{Binding Salidas}"
             Padding="8">
             <ListView
-                ItemsSource="{Binding Salidas}">
-                
+                HasUnevenRows="True"
+                IsPullToRefreshEnabled="True"
+                IsRefreshing="{Binding IsRefreshing}"
+                ItemsSource="{Binding Salidas}"
+                RefreshCommand="{Binding RefreshCommand}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Text="Bomberos"/>
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Text="Retén"/>
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="2"
+                                    Grid.ColumnSpan="2"
+                                    Text="{Binding DiaSalida, StringFormat='Dia: {0:dd/MM/yyyy}'}"/>
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Text="{Binding Bombero1}"/>
+                                <CheckBox
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    IsChecked="{Binding EsReten1}"
+                                    IsEnabled="False"/>
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="2"
+                                    Text="{Binding HoraSalida, StringFormat='Salida: {0:HH:mm}'}"/>
+                                <Label
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    Text="{Binding Bombero2}"/>
+                                <CheckBox
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    IsChecked="{Binding EsReten2}"
+                                    IsEnabled="False"/>
+                                <Label 
+                                    Grid.Row="2"
+                                    Grid.Column="2"
+                                    Text="{Binding HoraRegreso, StringFormat='Regreso: {0:HH:mm}'}"/>
+                                <Image
+                                    Grid.Row="1"
+                                    Grid.Column="3"
+                                    Source="ic_chevron_right"
+                                    VerticalOptions="Center"
+                                />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
             </ListView>
         </StackLayout>
     </ContentPage.Content>

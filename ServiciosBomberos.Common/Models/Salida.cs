@@ -35,10 +35,10 @@
         [JsonProperty("descripcion")]
         public string Descripcion { get; set; }
 
-        [JsonProperty("totalHorasSalida")]
-        public TimeSpan TotalHorasSalida { get; set; }
+        public TimeSpan TotalHorasSalida { get { return this.HoraRegreso - this.HoraSalida; } }
 
         [JsonProperty("user")]
         public User User { get; set; }
+
     }
 }

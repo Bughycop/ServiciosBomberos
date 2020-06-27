@@ -2,9 +2,9 @@
 {
     using System.Collections.Generic;
     using System.Linq;
-    using Microsoft.AspNetCore.Mvc.Rendering;
-    using Data.Entities;
+    using Entities;
     using Helpers;
+    using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.EntityFrameworkCore;
 
     public class SalidaRepository : GenericRepository<Salida>, ISalidaRepository
