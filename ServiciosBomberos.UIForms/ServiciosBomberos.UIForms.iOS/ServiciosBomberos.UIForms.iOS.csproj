@@ -151,4 +151,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\BomberoFuego.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_chevron_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\exit_phone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\add_bar_icon.png" />
+  </ItemGroup>
 </Project>

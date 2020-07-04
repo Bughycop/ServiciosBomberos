@@ -66,6 +66,7 @@
 
             var mySalidas = (List<Salida>)response.Result;
             this.Salidas = new ObservableCollection<Salida>(mySalidas);
+            this.isRefreshing = false;
         }
         #endregion
 

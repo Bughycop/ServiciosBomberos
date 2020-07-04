@@ -14,6 +14,10 @@
         public string SegundoApellido { get; set; }
 
         [Required(ErrorMessage = "El campo {0} es obligatorio")]
+        [Display(Name = "Numero de Teléfono")]
+        public string NumeroTelefono { get; set; }
+
+        [Required(ErrorMessage = "El campo {0} es obligatorio")]
         [DataType(DataType.EmailAddress)]
         public string UserName { get; set; }
 

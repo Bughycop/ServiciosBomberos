@@ -95,6 +95,7 @@
                         Nombre = model.Nombre,
                         PrimerApellido = model.PrimerApellido,
                         SegundoApellido = model.SegundoApellido,
+                        PhoneNumber=model.NumeroTelefono,
                         Email = model.UserName,
                         UserName = model.UserName
                     };
@@ -117,8 +118,9 @@
                         protocol: HttpContext.Request.Scheme);
 
                     this.mailHelper.SendMail(model.UserName, "Confirmación de correo de Gestion de Bomberos Maó", $"<h1>Bomberos Maó Confirmación de correo</h1>" +
-                        $"Para habilitar el Usuario" +
-                        $"por favor haca click en el link:<br></br><a href= \"{tokenLink}\">Confirme su Email</a>");
+                        $"Para habilitar el Usuario" + 
+                        $"por favor haca click en el link:<br></br><a href= \"{tokenLink}\">Confirme su Email</a><br></br>" +
+                        $"Su nombre de Usuario será su Email completo y su contraseña su nombre de Usuario sin incluir @xxx.xxx seguido de su numero de teléfono");
                     this.ViewBag.Message = "Las instrucciones para validar su Usuario han sido enviadas a su Email";
                     return this.View(model);
                 }
@@ -161,6 +163,7 @@
                 model.Nombre = user.Nombre;
                 model.PrimerApellido = user.PrimerApellido;
                 model.SegundoApellido = user.SegundoApellido;
+                model.NumeroTelefono = user.PhoneNumber;
             }
 
             return this.View(model);
@@ -178,6 +181,7 @@
                     user.Nombre = model.Nombre;
                     user.PrimerApellido = model.PrimerApellido;
                     user.SegundoApellido = model.SegundoApellido;
+                    user.PhoneNumber = model.NumeroTelefono;
                     var response = await this.userHelper.UpdateUserAsync(user);
                     if (response.Succeeded)
                     {

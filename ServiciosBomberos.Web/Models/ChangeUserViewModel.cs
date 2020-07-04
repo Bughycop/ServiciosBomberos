@@ -14,5 +14,8 @@
         [Display(Name = "Segundo Apellido")]
         public string SegundoApellido { get; set; }
 
+        [Display(Name ="Numero de Teléfono")]
+        public string NumeroTelefono { get; set; }
+
     }
 }

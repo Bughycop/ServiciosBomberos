@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="ServiciosBomberos.UIForms.Views.AddTipoSalidaPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="Añadir nuevo Tipo de Servicio">
+    <ContentPage.Content>
+        <ScrollView
+            BindingContext="{Binding AddTipoSalida}">
+            <StackLayout
+                Padding="10">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label
+                        FontSize="Medium"
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Text="Tipo">
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        Placeholder="Asigne un nombre..."
+                        Text="{Binding Nombre}">
+                        <Entry.Keyboard>
+                            <Keyboard x:FactoryMethod="Create">
+                                <x:Arguments>
+                                    <KeyboardFlags>Suggestions,CapitalizeCharacter</KeyboardFlags>
+                                </x:Arguments>
+                            </Keyboard>
+                        </Entry.Keyboard>
+                    </Entry>
+                    <Label
+                        FontSize="Medium"
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        Text="Prioridad">
+                    </Label>
+                    <Picker
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        SelectedItem="{Binding Prioridad}">
+                        <Picker.Items>
+                            <x:String>ALTA</x:String>
+                            <x:String>MEDIA</x:String>
+                            <x:String>BAJA</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </Grid>
+                <ActivityIndicator
+                    IsRunning="{Binding IsRunning}"
+                    VerticalOptions="CenterAndExpand">
+                </ActivityIndicator>
+                <Button
+                    BackgroundColor="Navy"
+                    Command="{Binding SaveCommand}"
+                    HeightRequest="46"
+                    CornerRadius="23"
+                    IsEnabled="{Binding IsEnabled}"
+                    Text="Guardar"
+                    TextColor="White">
+                </Button>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

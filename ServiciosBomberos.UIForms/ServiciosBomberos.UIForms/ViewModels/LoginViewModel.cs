@@ -1,21 +1,24 @@
 ﻿namespace ServiciosBomberos.UIForms.ViewModels
 {
     using System.Windows.Input;
+    using Common.Helpers;
+    using Common.Models;
+    using Common.Services;
     using GalaSoft.MvvmLight.Command;
-    using ServiciosBomberos.Common.Models;
-    using ServiciosBomberos.Common.Services;
+    using Newtonsoft.Json;
     using Views;
     using Xamarin.Forms;
 
     public class LoginViewModel : BaseViewModel
     {
         #region Atributos
-        private ApiService apiService;
+        private readonly ApiService apiService;
         private bool iSRunning;
         private bool isEnabled;
         #endregion
 
         #region Propiedades
+        public bool IsRemember { get; set; }
 
         public bool IsRunning
         {
@@ -23,7 +26,7 @@
             set => SetValue(ref this.iSRunning, value);
         }
 
-        public bool IsEnabled 
+        public bool IsEnabled
         {
             get => this.isEnabled;
             set => SetValue(ref this.isEnabled, value);
@@ -40,9 +43,10 @@
         public LoginViewModel()
         {
             this.apiService = new ApiService();
-            this.Email = "bughybombero@gmail.com";
-            this.Password = "123456";
+            //this.Email = "bughybombero@gmail.com";
+            //this.Password = "123456";
             this.IsEnabled = true;
+            this.IsRemember = true;
         }
 
         #endregion
@@ -96,9 +100,16 @@
 
             var token = (TokenResponse)response.Result;
             var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.UserEmail = this.Email;
+            mainViewModel.USerPassword = this.Password;
             mainViewModel.Token = token;
-            mainViewModel.Salidas = new SalidasViewModel();
-            //await Application.Current.MainPage.Navigation.PushAsync(new SalidasPage());
+            mainViewModel.Tipos = new TiposViewModel();
+
+            Settings.IsRemember = this.IsRemember;
+            Settings.UserEmail = this.Email;
+            Settings.UserPassword = this.Password;
+            Settings.Token = JsonConvert.SerializeObject(token);
+
             Application.Current.MainPage = new MasterPage();
         }
 

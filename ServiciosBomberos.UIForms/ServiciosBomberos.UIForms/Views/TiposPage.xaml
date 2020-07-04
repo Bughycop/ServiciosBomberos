@@ -7,6 +7,9 @@
              x:Class="ServiciosBomberos.UIForms.Views.TiposPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              Title="Tipos de Salida">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="add_bar_icon" Command="{Binding AddTipoSalidaCommand}"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout
             BindingContext="{Binding Tipos}"
@@ -19,23 +22,30 @@
                     <DataTemplate>
                         <ViewCell>
                             <Grid>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding SelectTipoCommand}"/>
+                                </Grid.GestureRecognizers>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="3*"/>
                                     <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
                                 <Label
                                     FontSize="Medium"
-                                    FontAttributes="Bold"
                                     Grid.Column="0"
                                     Text="{Binding Nombre}">
                                 </Label>
                                 <Label
-                                    FontSize="Medium"
+                                    FontSize="Small"
                                     FontAttributes="Bold"
                                     Grid.Column="1"
                                     Text="{Binding Prioridad}"
                                     TextColor="Navy">
                                 </Label>
+                                <Image
+                                    Grid.Column="2"
+                                    Source="ic_chevron_right">
+                                </Image>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>

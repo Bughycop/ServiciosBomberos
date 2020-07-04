@@ -7,6 +7,9 @@
              x:Class="ServiciosBomberos.UIForms.Views.SalidasPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              Title="Servicios Realizados">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="add_bar_icon" Command="{Binding AddSalidaCommand}"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout
             BindingContext="{Binding Salidas}"

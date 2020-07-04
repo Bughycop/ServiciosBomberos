@@ -24,22 +24,26 @@
                     <DataTemplate>
                         <ViewCell>
                             <Grid>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding SelectMenuCommand}"/>
+                                </Grid.GestureRecognizers>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                                     <ColumnDefinition Width="*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Image
                                     Grid.Column="0"
-                                    HeightRequest="50"
+                                    HeightRequest="35"
                                     Source="{Binding Icon}"
-                                    WidthRequest="50">
+                                    WidthRequest="35">
                                 </Image>
                                 <Label
                                     Grid.Column="1"
                                     FontAttributes="Bold"
+                                    FontSize="Medium"
                                     VerticalOptions="Center"
                                     TextColor="Yellow"
-                                    Text="{Binding Text}">
+                                    Text="{Binding Title}">
                                 </Label>
                             </Grid>
                         </ViewCell>

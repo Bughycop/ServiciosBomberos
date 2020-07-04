@@ -6,7 +6,7 @@
     public class Tipo
     {
         [JsonProperty("id")]
-        public long Id { get; set; }
+        public int Id { get; set; }
 
         [JsonProperty("nombre")]
         public string Nombre { get; set; }
@@ -17,9 +17,5 @@
         [JsonProperty("user")]
         public User User { get; set; }
 
-        public override string ToString()
-        {
-            return $"{this.Nombre} {this.Prioridad}";
-        }
     }
 }
