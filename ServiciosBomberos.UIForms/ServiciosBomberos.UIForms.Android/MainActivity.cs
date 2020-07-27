@@ -11,7 +11,7 @@ namespace ServiciosBomberos.UIForms.Droid
 {
     [Activity(
         Label = "ServiciosBomberos.UIForms",
-        Icon = "@mipmap/icon",
+        Icon = "@mipmap/ic_launcher",
         Theme = "@style/MainTheme",
         MainLauncher = false,
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]

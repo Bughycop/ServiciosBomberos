@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="ServiciosBomberos.UIForms.Views.EditSalidaPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="Edite el Servicio">
+    <ContentPage.Content>
+        <ScrollView
+            BindingContext="{Binding EditSalida}">
+            <StackLayout
+                Padding="10">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Text="Dia del Servicio"
+                        FontSize="Medium">
+                    </Label>
+                    <DatePicker
+                        Date="{Binding Salida.DiaSalida}"
+                        Grid.Column="1"
+                        Grid.Row="0"/>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        Text="Bombero"
+                        FontSize="Medium">
+                    </Label>
+                    <Picker
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        Title="Seleccione un Bombero">
+                    </Picker>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="2"
+                        Text="Bombero"
+                        FontSize="Medium">
+                    </Label>
+                    <Picker
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        Title="Seleccione un Bombero">
+                    </Picker>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="3"
+                        Text="Hora Inicio"
+                        FontSize="Medium"/>
+                    <TimePicker
+                        Grid.Column="1"
+                        Grid.Row="3">
+                    </TimePicker>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="4"
+                        Text="Hora Inicio"
+                        FontSize="Medium"/>
+                    <TimePicker
+                        Grid.Column="1"
+                        Grid.Row="4">
+                    </TimePicker>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="5"
+                        Text="Tipo de Servicio"
+                        FontSize="Medium"/>
+                    <Picker
+                        Grid.Column="1"
+                        Grid.Row="5"
+                        Title="Seleccione un tipo de Servicio"/>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="6"
+                        Text="Notas Servicio">
+                    </Label>
+                    <Editor
+                        Grid.Column="1"
+                        Grid.Row="6">
+                    </Editor>
+                </Grid>
+                <ActivityIndicator
+                    IsRunning="{Binding IsRunning}">
+                </ActivityIndicator>
+                <Button
+                    BackgroundColor="Navy"
+                    Command="{Binding SaveSalidaCommand}"
+                    CornerRadius="23"
+                    HeightRequest="46"
+                    IsEnabled="{Binding IsEnabled}"
+                    Text="Guardar"
+                    TextColor="White"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

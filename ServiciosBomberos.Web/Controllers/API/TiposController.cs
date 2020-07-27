@@ -102,7 +102,11 @@
             await this.tipoRepository.DeleteAsync(tipo);
             return Ok(tipo);
         }
-
+        //[HttpGet("{id}")]
+        //public IActionResult GetComboTiposMovil()
+        //{
+        //    return Ok(this.tipoRepository.GetComboTipos());
+        //}
         #endregion
     }
 }

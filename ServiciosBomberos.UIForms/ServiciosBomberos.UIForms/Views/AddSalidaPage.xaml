@@ -4,9 +4,144 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="ServiciosBomberos.UIForms.Views.AddSalidaPage">
+             x:Class="ServiciosBomberos.UIForms.Views.AddSalidaPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="Muevo Servicio">
     <ContentPage.Content>
-        <ScrollView>
+        <ScrollView
+            BindingContext="{Binding AddSalida}">
+            <StackLayout
+                Padding="10">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Text="Dia del Servicio"
+                        FontSize="Medium"
+                        VerticalOptions="Center">
+                    </Label>
+                    <DatePicker
+                        Date="{Binding DiaSalida}"
+                        Grid.Column="1"
+                        Grid.Row="0"/>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        Text="Bombero"
+                        FontSize="Medium"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Picker
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        ItemDisplayBinding="{Binding Text}"
+                        ItemsSource="{Binding Bomberos}"
+                        SelectedItem="{Binding BomberoCombo1}">
+                    </Picker>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="2"
+                        Text="Retén"
+                        FontSize="Medium"
+                        VerticalOptions="Center"/>
+                    <CheckBox
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        IsChecked="{Binding EsReten1}">
+                    </CheckBox>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="3"
+                        Text="Bombero"
+                        FontSize="Medium"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Picker
+                        Grid.Column="1"
+                        Grid.Row="3"
+                        Title="Seleccione un Bombero"
+                        ItemDisplayBinding="{Binding Text}"
+                        ItemsSource="{Binding Bomberos}"
+                        SelectedItem="{Binding BomberoCombo2}">
+                    </Picker>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="4"
+                        Text="Retén"
+                        FontSize="Medium"
+                        VerticalOptions="Center"/>
+                    <CheckBox
+                        Grid.Column="1"
+                        Grid.Row="4"
+                        IsChecked="{Binding EsReten2}">
+                    </CheckBox>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="5"
+                        Text="Hora Inicio"
+                        FontSize="Medium"
+                        VerticalOptions="Center"/>
+                    <TimePicker
+                        Grid.Column="1"
+                        Grid.Row="5"
+                        Time="{Binding HoraSalida}">
+                    </TimePicker>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="6"
+                        Text="Hora Inicio"
+                        FontSize="Medium"
+                        VerticalOptions="Center"/>
+                    <TimePicker
+                        Grid.Column="1"
+                        Grid.Row="6"
+                        Time="{Binding HoraRegreso}">
+                    </TimePicker>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="7"
+                        Text="Tipo de Servicio"
+                        FontSize="Medium"
+                        VerticalOptions="Center"/>
+                    <Picker
+                        Grid.Column="1"
+                        Grid.Row="7"
+                        Title="Seleccione Servicio"
+                        ItemDisplayBinding="{Binding Nombre}"
+                        ItemsSource="{Binding Tipos}"
+                        SelectedItem="{Binding TipoCombo}"/>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="8"
+                        Text="Notas Servicio"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Editor
+                        Text="{Binding Descripcion}"
+                        Grid.Column="1"
+                        Grid.Row="8">
+                    </Editor>
+                </Grid>
+                <ActivityIndicator
+                    IsRunning="{Binding IsRunning}">
+                </ActivityIndicator>
+                <Button
+                    Grid.Row="9"
+                    Grid.ColumnSpan="2"
+                    BackgroundColor="Navy"
+                    Command="{Binding SaveSalidaCommand}"
+                    CornerRadius="23"
+                    HeightRequest="46"
+                    IsEnabled="{Binding IsEnabled}"
+                    Text="Guardar"
+                    TextColor="White"
+                    VerticalOptions="EndAndExpand">
+                </Button>
+            </StackLayout>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

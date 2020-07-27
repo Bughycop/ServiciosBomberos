@@ -26,7 +26,7 @@
                     mainViewModel.Token = token;
                     mainViewModel.UserEmail = Settings.UserEmail;
                     mainViewModel.USerPassword = Settings.UserPassword;
-                    mainViewModel.Tipos = new TiposViewModel();
+                    mainViewModel.Salidas = new SalidasViewModel();
                     this.MainPage = new MasterPage();
                     return;
                 }

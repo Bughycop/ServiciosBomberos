@@ -1,13 +1,11 @@
-﻿using GalaSoft.MvvmLight.Command;
-using ServiciosBomberos.Common.Models;
-using ServiciosBomberos.Common.Services;
-using System;
-using System.IO.Compression;
-using System.Windows.Input;
-using Xamarin.Forms;
-
-namespace ServiciosBomberos.UIForms.ViewModels
+﻿namespace ServiciosBomberos.UIForms.ViewModels
 {
+    using System.Windows.Input;
+    using Common.Models;
+    using Common.Services;
+    using GalaSoft.MvvmLight.Command;
+    using Xamarin.Forms;
+
     public class EditTipoSalidaViewModel : BaseViewModel
     {
         #region Atributos
@@ -48,11 +46,11 @@ namespace ServiciosBomberos.UIForms.ViewModels
             {
                 await Application.Current.MainPage.DisplayAlert(
                     "ERROR",
-                    "Debe insertar un nombre para el tipo de Servicio", 
+                    "Debe insertar un nombre para el tipo de Servicio",
                     "Aceptar");
                 return;
             }
-            
+
             if (string.IsNullOrEmpty(this.Tipo.Prioridad))
             {
                 await Application.Current.MainPage.DisplayAlert(

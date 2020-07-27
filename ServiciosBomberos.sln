@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{A2D1
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontend", "Frontend", "{9E3AD6AF-6C70-49EE-B090-D920A78CBDD8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiciosBomberos.Web", "ServiciosBomberos.Web\ServiciosBomberos.Web.csproj", "{12438D54-B39A-41D8-A80F-763054A7E44A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiciosBomberos.Web", "ServiciosBomberos.Web\ServiciosBomberos.Web.csproj", "{12438D54-B39A-41D8-A80F-763054A7E44A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Forms", "Forms", "{9D45664C-D6FB-451A-A70C-4D33A294B070}"
 EndProject
@@ -19,9 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiciosBomberos.UIForms.A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiciosBomberos.UIForms.iOS", "ServiciosBomberos.UIForms\ServiciosBomberos.UIForms.iOS\ServiciosBomberos.UIForms.iOS.csproj", "{EADF5DF1-79E9-400B-9BF6-3A1346B2E3D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiciosBomberos.UIForms", "ServiciosBomberos.UIForms\ServiciosBomberos.UIForms\ServiciosBomberos.UIForms.csproj", "{3AE80B82-B32D-446E-BC0D-8296E5DA241D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiciosBomberos.UIClassic", "ServiciosBomberos.UIClassic\ServiciosBomberos.UIClassic.csproj", "{24EB0E12-F1C3-4C4F-A628-0590E4EEC01E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiciosBomberos.UIForms", "ServiciosBomberos.UIForms\ServiciosBomberos.UIForms\ServiciosBomberos.UIForms.csproj", "{3AE80B82-B32D-446E-BC0D-8296E5DA241D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiciosBomberos.UIClassic.Android", "ServiciosBomberos.UIClassic.Android\ServiciosBomberos.UIClassic.Android.csproj", "{63028F39-1C14-4113-8C7E-656EE3F2004C}"
 EndProject
@@ -101,18 +99,6 @@ Global
 		{3AE80B82-B32D-446E-BC0D-8296E5DA241D}.Release|iPhone.Build.0 = Release|Any CPU
 		{3AE80B82-B32D-446E-BC0D-8296E5DA241D}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{3AE80B82-B32D-446E-BC0D-8296E5DA241D}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
-		{24EB0E12-F1C3-4C4F-A628-0590E4EEC01E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{24EB0E12-F1C3-4C4F-A628-0590E4EEC01E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{24EB0E12-F1C3-4C4F-A628-0590E4EEC01E}.Debug|iPhone.ActiveCfg = Debug|Any CPU
-		{24EB0E12-F1C3-4C4F-A628-0590E4EEC01E}.Debug|iPhone.Build.0 = Debug|Any CPU
-		{24EB0E12-F1C3-4C4F-A628-0590E4EEC01E}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
-		{24EB0E12-F1C3-4C4F-A628-0590E4EEC01E}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
-		{24EB0E12-F1C3-4C4F-A628-0590E4EEC01E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{24EB0E12-F1C3-4C4F-A628-0590E4EEC01E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{24EB0E12-F1C3-4C4F-A628-0590E4EEC01E}.Release|iPhone.ActiveCfg = Release|Any CPU
-		{24EB0E12-F1C3-4C4F-A628-0590E4EEC01E}.Release|iPhone.Build.0 = Release|Any CPU
-		{24EB0E12-F1C3-4C4F-A628-0590E4EEC01E}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
-		{24EB0E12-F1C3-4C4F-A628-0590E4EEC01E}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{63028F39-1C14-4113-8C7E-656EE3F2004C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{63028F39-1C14-4113-8C7E-656EE3F2004C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63028F39-1C14-4113-8C7E-656EE3F2004C}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
@@ -152,7 +138,6 @@ Global
 		{25EB52C2-7EDE-4EBF-BAA6-578524167D20} = {9D45664C-D6FB-451A-A70C-4D33A294B070}
 		{EADF5DF1-79E9-400B-9BF6-3A1346B2E3D6} = {9D45664C-D6FB-451A-A70C-4D33A294B070}
 		{3AE80B82-B32D-446E-BC0D-8296E5DA241D} = {9D45664C-D6FB-451A-A70C-4D33A294B070}
-		{24EB0E12-F1C3-4C4F-A628-0590E4EEC01E} = {89071AE2-07BA-4707-903A-D2D3FBEE424D}
 		{63028F39-1C14-4113-8C7E-656EE3F2004C} = {89071AE2-07BA-4707-903A-D2D3FBEE424D}
 		{B350B12A-44F9-4DB8-B2B5-65FBBBDE8927} = {89071AE2-07BA-4707-903A-D2D3FBEE424D}
 	EndGlobalSection

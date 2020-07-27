@@ -1,5 +1,6 @@
 ﻿namespace ServiciosBomberos.UIForms.ViewModels
 {
+    using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
@@ -33,7 +34,13 @@
 
         public EditTipoSalidaViewModel EditTipoSalida { get; set; }
 
+        public AddSalidaViewModel AddSalida { get; set; }
+
+        public EditSalidaViewModel EditSalida { get; set; }
+
         public ICommand AddTipoSalidaCommand => new RelayCommand(this.GoAddTipoSalida);
+
+        public ICommand AddSalidaCommand => new RelayCommand(this.GoAddSalida);
 
 
         #endregion
@@ -99,6 +106,13 @@
             this.AddTipoSalida = new AddTipoSalidaViewModel();
             await App.Navigator.PushAsync(new AddTipoSalidaPage());
         }
+
+        private async void GoAddSalida()
+        {
+            this.AddSalida = new AddSalidaViewModel();
+            await App.Navigator.PushAsync(new AddSalidaPage());
+        }
+
         #endregion
     }
 }

@@ -1,11 +1,10 @@
 ﻿namespace ServiciosBomberos.UIForms.ViewModels
 {
-    using Common.Models;
-    using ServiciosBomberos.Common.Services;
-    using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
+    using Common.Models;
+    using Common.Services;
     using Xamarin.Forms;
 
     public class TiposViewModel : BaseViewModel

@@ -1,7 +1,9 @@
 ﻿namespace ServiciosBomberos.UIForms.ViewModels
 {
+    using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.Linq;
     using System.Windows.Input;
     using Common.Models;
     using Common.Services;
@@ -12,12 +14,13 @@
     {
         #region Atributos
         private readonly ApiService apiService;
-        private ObservableCollection<Salida> salidas;
+        private List<Salida> mySalidas;
+        private ObservableCollection<SalidaItemViewModel> salidas;
         private bool isRefreshing;
         #endregion
 
         #region Propiedades
-        public ObservableCollection<Salida> Salidas
+        public ObservableCollection<SalidaItemViewModel> Salidas
         {
             get => this.salidas;
             set => this.SetValue(ref this.salidas, value);
@@ -53,8 +56,6 @@
                 "bearer",
                 MainViewModel.GetInstance().Token.Token);
 
-            this.IsRefreshing = false;
-
             if (!response.IsSuccess)
             {
                 await Application.Current.MainPage.DisplayAlert(
@@ -64,13 +65,62 @@
                 return;
             }
 
-            var mySalidas = (List<Salida>)response.Result;
-            this.Salidas = new ObservableCollection<Salida>(mySalidas);
-            this.isRefreshing = false;
+            this.mySalidas = (List<Salida>)response.Result;
+            this.RefreshListaSalidas();
+            this.IsRefreshing = false;
+        }
+
+        public void AdSalidaToList(Salida salida)
+        {
+            this.mySalidas.Add(salida);
+            this.RefreshListaSalidas();
+        }
+
+        public void UpdateSalidaInList(Salida salida)
+        {
+            var previousSalida = this.mySalidas.Where(s => s.Id == salida.Id).FirstOrDefault();
+            if (previousSalida!=null)
+            {
+                this.mySalidas.Remove(previousSalida);
+            }
+            this.mySalidas.Add(salida);
+            this.RefreshListaSalidas();
+        }
+
+        private void DeleteSalidaInList(int salidaId)
+        {
+            var previousSalida = this.mySalidas.Where(s => s.Id == salidaId).FirstOrDefault();
+            if (previousSalida != null)
+            {
+                this.mySalidas.Remove(previousSalida);
+            }
+            this.RefreshListaSalidas();
+
+        }
+
+        private void RefreshListaSalidas()
+        {
+            this.Salidas = new ObservableCollection<SalidaItemViewModel>(
+                this.mySalidas.Select(s => new SalidaItemViewModel
+                {
+                    Id = s.Id,
+                    DiaSalida = s.DiaSalida,
+                    Bombero1 = s.Bombero1,
+                    EsReten1 = s.EsReten1,
+                    Bombero2 = s.Bombero2,
+                    EsReten2 = s.EsReten2,
+                    HoraSalida = s.HoraSalida,
+                    HoraRegreso = s.HoraRegreso,
+                    TipoSalida = s.TipoSalida,
+                    Descripcion = s.Descripcion,
+                    User = s.User
+                }).OrderByDescending(s => s.DiaSalida).ToList());
         }
         #endregion
 
         #region Comandos
+
+
         public ICommand RefreshCommand 
         {
             get 

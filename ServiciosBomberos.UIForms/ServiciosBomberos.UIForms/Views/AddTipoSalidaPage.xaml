@@ -59,7 +59,7 @@
                 </ActivityIndicator>
                 <Button
                     BackgroundColor="Navy"
-                    Command="{Binding SaveCommand}"
+                    Command="{Binding SaveTipoCommand}"
                     HeightRequest="46"
                     CornerRadius="23"
                     IsEnabled="{Binding IsEnabled}"

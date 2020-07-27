@@ -11,7 +11,7 @@
 
         private async void SelectTipo()
         {
-            MainViewModel.GetInstance().EditTipoSalida = new EditTipoSalidaViewModel(this);
+            MainViewModel.GetInstance().EditTipoSalida = new EditTipoSalidaViewModel((Tipo)this);
             await App.Navigator.PushAsync(new EditTipoSalidaPage());
         }
     }

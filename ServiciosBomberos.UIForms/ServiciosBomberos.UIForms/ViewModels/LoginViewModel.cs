@@ -103,7 +103,7 @@
             mainViewModel.UserEmail = this.Email;
             mainViewModel.USerPassword = this.Password;
             mainViewModel.Token = token;
-            mainViewModel.Tipos = new TiposViewModel();
+            mainViewModel.Salidas = new SalidasViewModel();
 
             Settings.IsRemember = this.IsRemember;
             Settings.UserEmail = this.Email;

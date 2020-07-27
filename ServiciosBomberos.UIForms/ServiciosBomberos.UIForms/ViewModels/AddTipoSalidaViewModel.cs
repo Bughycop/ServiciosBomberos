@@ -31,7 +31,7 @@
 
         public string Prioridad { get; set; }
 
-        public ICommand SaveCommand => new RelayCommand(this.Save);
+        public ICommand SaveTipoCommand => new RelayCommand(this.Save);
 
         #endregion
 
