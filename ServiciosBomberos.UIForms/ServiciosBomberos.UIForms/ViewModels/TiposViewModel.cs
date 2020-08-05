@@ -39,6 +39,17 @@
         #region Metodos
         private async void LoadTipos()
         {
+            var connection = await this.apiService.CheckConnection();
+
+            if (!connection.IsSuccess)
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    "ERROR",
+                    connection.Message,
+                    "Aceptar");
+                return;
+            }
+
             this.IsRefreshing = true;
 
             var url = Application.Current.Resources["UrlApi"].ToString();

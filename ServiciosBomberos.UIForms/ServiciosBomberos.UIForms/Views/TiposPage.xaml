@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="ServiciosBomberos.UIForms.Views.TiposPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="Tipos de Salida">
+             Title="Tipos de Servicio">
     <ContentPage.ToolbarItems>
         <ToolbarItem IconImageSource="add_bar_icon" Command="{Binding AddTipoSalidaCommand}"/>
     </ContentPage.ToolbarItems>

@@ -37,14 +37,14 @@
 
         public ICommand LoginCommand => new RelayCommand(Login);
 
+        public ICommand RememberPasswordCommand => new RelayCommand(this.RememberPassword);
+
         #endregion
 
         #region Constructor
         public LoginViewModel()
         {
             this.apiService = new ApiService();
-            //this.Email = "bughybombero@gmail.com";
-            //this.Password = "123456";
             this.IsEnabled = true;
             this.IsRemember = true;
         }
@@ -54,6 +54,17 @@
         #region Metodos
         private async void Login()
         {
+            var connection = await this.apiService.CheckConnection();
+
+            if (!connection.IsSuccess)
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    "ERROR",
+                    connection.Message,
+                    "Aceptar");
+                return;
+            }
+
             if (string.IsNullOrEmpty(this.Email))
             {
                 await Application.Current.MainPage.DisplayAlert(
@@ -99,7 +110,19 @@
             }
 
             var token = (TokenResponse)response.Result;
+
+            var response2 = await this.apiService.GetUserByEmailAsync(
+                url,
+                "/api",
+                "/Account/GetUserByEmail",
+                this.Email,
+                "bearer",
+                token.Token);
+
+            var user = (User)response2.Result;
+
             var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.User = user;
             mainViewModel.UserEmail = this.Email;
             mainViewModel.USerPassword = this.Password;
             mainViewModel.Token = token;
@@ -109,10 +132,16 @@
             Settings.UserEmail = this.Email;
             Settings.UserPassword = this.Password;
             Settings.Token = JsonConvert.SerializeObject(token);
+            Settings.User = JsonConvert.SerializeObject(user);
 
             Application.Current.MainPage = new MasterPage();
         }
 
+        private async void RememberPassword()
+        {
+            MainViewModel.GetInstance().RememberPassword = new RememberPasswordViewModel();
+            await Application.Current.MainPage.Navigation.PushAsync(new RememberPasswordPage());
+        }
         #endregion
     }
 }

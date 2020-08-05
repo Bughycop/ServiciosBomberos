@@ -118,11 +118,6 @@
             return Ok(salida);
         }
 
-        //[HttpGet("{id}")]
-        //public IActionResult GetUsersMalnom()
-        //{
-        //    return Ok(this.salidaRepository.GetComboUsers());
-        //}
         #endregion
     }
 }

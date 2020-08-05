@@ -24,6 +24,9 @@
                     <DataTemplate>
                         <ViewCell>
                             <Grid>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding SelectSalidaCommand}"/>
+                                </Grid.GestureRecognizers>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>

@@ -36,54 +36,88 @@
                     <Picker
                         Grid.Column="1"
                         Grid.Row="1"
-                        Title="Seleccione un Bombero">
+                        Title="Seleccione un Bombero"
+                        ItemDisplayBinding="{Binding Text}"
+                        ItemsSource="{Binding Bomberos}"
+                        SelectedItem="{Binding BomberoCombo1}">
                     </Picker>
                     <Label
                         Grid.Column="0"
                         Grid.Row="2"
+                        Text="Retén"
+                        FontSize="Medium">
+                    </Label>
+                    <CheckBox
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        IsChecked="{Binding Salida.EsReten1}">
+                    </CheckBox>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="3"
                         Text="Bombero"
                         FontSize="Medium">
                     </Label>
                     <Picker
                         Grid.Column="1"
-                        Grid.Row="2"
-                        Title="Seleccione un Bombero">
+                        Grid.Row="3"
+                        Title="Seleccione un Bombero"
+                        ItemDisplayBinding="{Binding Text}"
+                        ItemsSource="{Binding Bomberos}"
+                        SelectedItem="{Binding BomberoCombo2}">
                     </Picker>
                     <Label
                         Grid.Column="0"
-                        Grid.Row="3"
-                        Text="Hora Inicio"
-                        FontSize="Medium"/>
-                    <TimePicker
-                        Grid.Column="1"
-                        Grid.Row="3">
-                    </TimePicker>
-                    <Label
-                        Grid.Column="0"
                         Grid.Row="4"
-                        Text="Hora Inicio"
-                        FontSize="Medium"/>
-                    <TimePicker
+                        Text="Retén"
+                        FontSize="Medium">
+                    </Label>
+                    <CheckBox
                         Grid.Column="1"
-                        Grid.Row="4">
-                    </TimePicker>
+                        Grid.Row="4"
+                        IsChecked="{Binding Salida.EsReten2}">
+                    </CheckBox>
                     <Label
                         Grid.Column="0"
                         Grid.Row="5"
+                        Text="Hora Inicio"
+                        FontSize="Medium"/>
+                    <TimePicker
+                        Grid.Column="1"
+                        Grid.Row="5"
+                        Time="{Binding EditHoraSalida}">
+                    </TimePicker>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="6"
+                        Text="Hora Inicio"
+                        FontSize="Medium"/>
+                    <TimePicker
+                        Grid.Column="1"
+                        Grid.Row="6"
+                        Time="{Binding EditHoraRegreso}">
+                    </TimePicker>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="7"
                         Text="Tipo de Servicio"
                         FontSize="Medium"/>
                     <Picker
                         Grid.Column="1"
-                        Grid.Row="5"
-                        Title="Seleccione un tipo de Servicio"/>
+                        Grid.Row="7"
+                        Title="Seleccione un tipo de Servicio"
+                        ItemDisplayBinding="{Binding Nombre}"
+                        ItemsSource="{Binding Tipos}"
+                        SelectedItem="{Binding TipoCombo}"/>
                     <Label
                         Grid.Column="0"
-                        Grid.Row="6"
+                        Grid.Row="8"
                         Text="Notas Servicio">
                     </Label>
                     <Editor
                         Grid.Column="1"
-                        Grid.Row="6">
+                        Grid.Row="8"
+                        Text="{Binding Descripcion}">
                     </Editor>
                 </Grid>
                 <ActivityIndicator

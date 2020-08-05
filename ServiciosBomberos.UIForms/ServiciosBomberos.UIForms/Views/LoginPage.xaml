@@ -42,6 +42,15 @@
                         IsToggled="{Binding IsRemember}">
                     </Switch>
                 </StackLayout>
+                <Label
+                    HorizontalOptions="Center"
+                    Text="Olvide mi Contraseña"
+                    TextColor="Navy">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Command="{Binding RememberPasswordCommand}"/>
+                    </Label.GestureRecognizers>
+                </Label>
                 <ActivityIndicator
                     IsRunning="{Binding IsRunning}"
                     VerticalOptions="CenterAndExpand">

@@ -46,6 +46,17 @@
         #region Metodos
         private async void LoadSalidas()
         {
+            var connection = await this.apiService.CheckConnection();
+
+            if (!connection.IsSuccess)
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    "ERROR",
+                    connection.Message,
+                    "Aceptar");
+                return;
+            }
+
             this.IsRefreshing = true;
 
             var url = Application.Current.Resources["UrlApi"].ToString();
@@ -114,7 +125,7 @@
                     TipoSalida = s.TipoSalida,
                     Descripcion = s.Descripcion,
                     User = s.User
-                }).OrderByDescending(s => s.DiaSalida).ToList());
+                }).OrderByDescending(s => s.Id).ToList());
         }
         #endregion
 

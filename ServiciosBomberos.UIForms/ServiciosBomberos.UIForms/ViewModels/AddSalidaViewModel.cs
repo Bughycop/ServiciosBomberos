@@ -135,6 +135,18 @@
                 return;
             }
 
+            var connection = await this.apiService.CheckConnection();
+
+            if (!connection.IsSuccess)
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    "ERROR",
+                    connection.Message,
+                    "Aceptar");
+                return;
+            }
+
+
             IsRunning = true;
             IsEnabled = false;
 
@@ -201,6 +213,16 @@
 
         private async void LoadBomberos()
         {
+            var connection = await this.apiService.CheckConnection();
+
+            if (!connection.IsSuccess)
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    "ERROR",
+                    connection.Message,
+                    "Aceptar");
+                return;
+            }
 
             var url = Application.Current.Resources["UrlApi"].ToString();
             var response = await this.apiService.GetListAsync<Bombero>(
@@ -225,6 +247,17 @@
         }
         private async void LoadTipos()
         {
+            var connection = await this.apiService.CheckConnection();
+
+            if (!connection.IsSuccess)
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    "ERROR",
+                    connection.Message,
+                    "Aceptar");
+                return;
+            }
+
             var url = Application.Current.Resources["UrlApi"].ToString();
             var response = await this.apiService.GetListAsync<Tipo>(
                 url,

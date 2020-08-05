@@ -6,6 +6,7 @@
     using Microsoft.AspNetCore.Mvc;
     using Helpers;
     using System.Threading.Tasks;
+    using System.Linq;
 
     [Route("api/[Controller]")]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
@@ -26,7 +27,7 @@
         [HttpGet]
         public IActionResult GetBombero()
         {
-            return Ok(this.salidaRepository.GetComboUsers());
+            return Ok(this.salidaRepository.GetComboUsers().Skip(1));
         }
         #endregion
     }

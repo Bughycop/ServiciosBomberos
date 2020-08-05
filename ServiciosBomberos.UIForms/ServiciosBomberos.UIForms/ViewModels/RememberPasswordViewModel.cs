@@ -1,12 +1,14 @@
 ﻿namespace ServiciosBomberos.UIForms.ViewModels
 {
-    using System.Windows.Input;
-    using Common.Models;
     using Common.Services;
     using GalaSoft.MvvmLight.Command;
+    using ServiciosBomberos.Common.Helpers;
+    using ServiciosBomberos.Common.Models;
+    using System;
+    using System.Windows.Input;
     using Xamarin.Forms;
 
-    public class AddTipoSalidaViewModel : BaseViewModel
+    public class RememberPasswordViewModel : BaseViewModel
     {
         #region Atributos
         private bool isRunning;
@@ -15,28 +17,26 @@
         #endregion
 
         #region Propiedades
-        public bool IsRunning
+        public bool IsRunning 
         {
             get => this.isRunning;
             set => this.SetValue(ref this.isRunning, value);
         }
-
         public bool IsEnabled
         {
             get => this.isEnabled;
             set => this.SetValue(ref this.isEnabled, value);
         }
 
-        public string Nombre { get; set; }
-
-        public string Prioridad { get; set; }
-
-        public ICommand SaveTipoCommand => new RelayCommand(this.Save);
-
+        public string Email { get; set; }
         #endregion
 
-        #region Constructor
-        public AddTipoSalidaViewModel()
+        #region Comandos
+        public ICommand RecoverCommand => new RelayCommand(this.Recover);
+        #endregion
+
+        #region Constructores
+        public RememberPasswordViewModel()
         {
             this.apiService = new ApiService();
             this.isEnabled = true;
@@ -44,23 +44,23 @@
         #endregion
 
         #region Metodos
-        private async void Save()
+        private async void Recover()
         {
-
-            if (string.IsNullOrEmpty(this.Nombre))
+            if (string.IsNullOrEmpty(this.Email))
             {
                 await Application.Current.MainPage.DisplayAlert(
                     "ERROR",
-                    "Debe insertar un nombre", "Aceptar");
+                    "Debe escribir su Email",
+                    "Aceptar");
                 return;
             }
 
-            if (string.IsNullOrEmpty(this.Prioridad))
+            if (!RegExHelper.IsValidEmail(this.Email))
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "ERROR",
-                    "Debe elegir una prioridad",
-                    "Aeptar");
+                  "ERROR",
+                  "Debe escribir un Email valido",
+                  "Aceptar");
                 return;
             }
 
@@ -75,42 +75,38 @@
                 return;
             }
 
-            this.IsRunning = true;
-            this.IsEnabled = false;
+            this.isRunning = true;
+            this.isEnabled = false;
 
-            var tipo = new Tipo
+            var request = new RecoverPasswordRequest
             {
-                Nombre = this.Nombre,
-                Prioridad = this.Prioridad,
-                User = new User { Email = MainViewModel.GetInstance().UserEmail }
+                Email = this.Email
             };
 
             var url = Application.Current.Resources["UrlApi"].ToString();
-            var response = await this.apiService.PostAsync(
+            var response = await this.apiService.RecoverPasswordAsync(
                 url,
                 "/api",
-                "/Tipos",
-                tipo,
-                "bearer",
-                MainViewModel.GetInstance().Token.Token);
+                "Account/RecoverPassword",
+                request);
+
+            this.isRunning = false;
+            this.isEnabled = true;
 
             if (!response.IsSuccess)
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "ERROR", 
-                    response.Message, 
+                    "ERROR",
+                    response.Message,
                     "Aceptar");
-                return;
             }
 
-            var newTipo = (Tipo)response.Result;
-            MainViewModel.GetInstance().Tipos.AddTipoToList(newTipo);
-
-            this.IsRunning = false;
-            this.IsEnabled = true;
-            await App.Navigator.PopAsync();
+            await Application.Current.MainPage.DisplayAlert(
+                "OK",
+                response.Message,
+                "Aceptar");
+            await Application.Current.MainPage.Navigation.PopAsync();
         }
-
         #endregion
     }
 }

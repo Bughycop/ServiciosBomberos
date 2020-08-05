@@ -15,7 +15,13 @@
                 HeightRequest="150"
                 Source="BomberoFuego">
             </Image>
-            <ListView
+            <Label
+                FontAttributes="Bold"
+                FontSize="Large"
+                Text="{Binding User.NombreCompleto, StringFormat='Bienvenido: {0}'}"
+                TextColor="Yellow">
+            </Label>
+                 <ListView
                 BackgroundColor="Transparent"
                 ItemsSource="{Binding Menus}"
                 HasUnevenRows="True"

@@ -16,6 +16,8 @@
         #endregion
 
         #region Propiedades
+
+        public User User { get; set; }
         public ObservableCollection<MenuItemViewModel> Menus { get; set; }
 
         public TokenResponse Token { get; set; }
@@ -37,6 +39,12 @@
         public AddSalidaViewModel AddSalida { get; set; }
 
         public EditSalidaViewModel EditSalida { get; set; }
+
+        public RememberPasswordViewModel RememberPassword { get; set; }
+
+        public ProfileViewModel Profile { get; set; }
+
+        public ChangePasswordViewModel ChangePassword { get; set; }
 
         public ICommand AddTipoSalidaCommand => new RelayCommand(this.GoAddTipoSalida);
 
@@ -80,9 +88,16 @@
 
                 new Menu
                 {
-                    Icon="ic_phonelink_setup",
-                    PageName="SetupPage",
-                    Title="Setup"
+                    Icon="ic_person_add",
+                    PageName="ProfilePage",
+                    Title="Modificar Usuario"
+                },
+
+                new Menu
+                {
+                    Icon="ic_fiber_new",
+                    PageName="TiposPage",
+                    Title="Tipos de Servicio"
                 },
 
                 new Menu

@@ -58,5 +58,8 @@
 
         [JsonProperty("accessFailedCount")]
         public long AccessFailedCount { get; set; }
+
+        public string NombreCompleto { get { return $"{this.Nombre} {this.PrimerApellido}"; } }
+
     }
 }

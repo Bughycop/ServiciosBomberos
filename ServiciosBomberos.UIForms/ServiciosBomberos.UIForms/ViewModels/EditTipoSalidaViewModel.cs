@@ -60,6 +60,17 @@
                 return;
             }
 
+            var connection = await this.apiService.CheckConnection();
+
+            if (!connection.IsSuccess)
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    "ERROR",
+                    connection.Message,
+                    "Aceptar");
+                return;
+            }
+
             this.isRunning = true;
             this.isEnabled = false;
 

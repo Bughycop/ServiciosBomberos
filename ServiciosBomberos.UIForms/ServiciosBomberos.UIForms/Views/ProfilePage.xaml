@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="ServiciosBomberos.UIForms.Views.ProfilePage"
+             BindingContext="{Binding Main,Source={StaticResource Locator}}"
+             Title="Modificar Datos Usuario">
+    <ContentPage.Content>
+        <ScrollView BindingContext="{Binding Profile}">
+            <StackLayout
+                Padding="10">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Text="Nombre"
+                        VerticalOptions="Center"/>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        Placeholder="Ponga su nombre..."
+                        Text="{Binding User.Nombre}"/>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        Text="Primer Apellido"
+                        VerticalOptions="Center"/>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        Placeholder="Ponga su primer Apellido..."
+                        Text="{Binding User.PrimerApellido}"/>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="2"
+                        Text="Segundo Apellido"
+                        VerticalOptions="Center"/>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        Placeholder="Ponga su segundo Apellido..."
+                        Text="{Binding User.SegundoApellido}"/>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="3"
+                        Text="Teléfono"
+                        VerticalOptions="Center"/>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="3"
+                        Keyboard="Telephone"
+                        Placeholder="Ponga Teléfono..."
+                        Text="{Binding User.PhoneNumber}"/>
+                </Grid>
+                <ActivityIndicator
+                    IsRunning="{Binding IsRunning}"
+                    VerticalOptions="CenterAndExpand">
+                </ActivityIndicator>
+                <StackLayout
+                    Orientation="Horizontal">
+                    <Button
+                        BackgroundColor="Navy"
+                        CornerRadius="26"
+                        Command="{Binding SaveCommand}"
+                        HeightRequest="52"
+                        HorizontalOptions="FillAndExpand"
+                        IsEnabled="{Binding IsEnabled}"
+                        Text="Guardar Cambios"
+                        TextColor="White">
+                    </Button>
+                    <Button
+                        BackgroundColor="Purple"
+                        CornerRadius="26"
+                        Command="{Binding ModifyPasswordCommand}"
+                        HeightRequest="52"
+                        HorizontalOptions="FillAndExpand"
+                        IsEnabled="{Binding IsEnabled}"
+                        Text="Modificar Password"
+                        TextColor="White">
+                    </Button>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
