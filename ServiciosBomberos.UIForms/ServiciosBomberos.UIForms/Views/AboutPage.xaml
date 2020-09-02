@@ -3,14 +3,24 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:i18n="clr-namespace:ServiciosBomberos.UIForms.Helpers"
              mc:Ignorable="d"
              x:Class="ServiciosBomberos.UIForms.Views.AboutPage"
-             Title="About">
+             Title="{i18n:Translate AboutLbl}">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="About"
+            <Label Text="{i18n:Translate AboutLbl}"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
+            <Label Text="{i18n:Translate AboutTxtLbl1}"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand"/>
+            <Label Text="{i18n:Translate AboutTxtLbl2}"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand"/>
+            <Label Text="bughybombero@gmail.com"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

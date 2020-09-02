@@ -3,87 +3,132 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:i18n="clr-namespace:ServiciosBomberos.UIForms.Helpers"
              mc:Ignorable="d"
              x:Class="ServiciosBomberos.UIForms.Views.SalidasPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="Servicios Realizados">
+             BackgroundColor="Silver"
+             Title="{i18n:Translate ServicesTitle}">
     <ContentPage.ToolbarItems>
         <ToolbarItem IconImageSource="add_bar_icon" Command="{Binding AddSalidaCommand}"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout
             BindingContext="{Binding Salidas}"
-            Padding="8">
+            Padding="5">
+            <StackLayout>
+                <StackLayout.Padding>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="Android" Value="40,10,40,10"/>
+                        <On Platform="iOs" Value="40,10,50,10"/>
+                    </OnPlatform>
+                </StackLayout.Padding>
+                <Frame
+                    HorizontalOptions="CenterAndExpand"
+                    BackgroundColor="Navy"
+                    CornerRadius="10"
+                    Padding="20,5">
+                    <Picker
+                        HorizontalOptions="Fill"
+                        ItemsSource="{Binding Mes}"
+                        ItemDisplayBinding="{Binding MonthName}"
+                        SelectedIndex="{Binding FilterMonth}"
+                        TextColor="Yellow"
+                        TitleColor="Yellow"
+                        Title="{i18n:Translate SelectMonthLbl}">
+                    </Picker>
+                </Frame>
+            </StackLayout>
             <ListView
+                BackgroundColor="Silver"
                 HasUnevenRows="True"
-                IsPullToRefreshEnabled="True"
                 IsRefreshing="{Binding IsRefreshing}"
                 ItemsSource="{Binding Salidas}"
-                RefreshCommand="{Binding RefreshCommand}">
+                SeparatorVisibility="None">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid>
-                                <Grid.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding SelectSalidaCommand}"/>
-                                </Grid.GestureRecognizers>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="2*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="2*"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
-                                <Label
+                            <Frame
+                                CornerRadius="20"
+                                HasShadow="True"
+                                Margin="5"
+                                Padding="5">
+                                <Grid>
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding SelectSalidaCommand}"/>
+                                    </Grid.GestureRecognizers>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label
                                     Grid.Row="0"
                                     Grid.Column="0"
-                                    Text="Bomberos"/>
-                                <Label
+                                    Text="{i18n:Translate FiremanLbl}"/>
+                                    <Label
                                     Grid.Row="0"
                                     Grid.Column="1"
-                                    Text="Retén"/>
-                                <Label
+                                    Text="{i18n:Translate ReinforcementLbl}"/>
+                                    <StackLayout
                                     Grid.Row="0"
                                     Grid.Column="2"
                                     Grid.ColumnSpan="2"
-                                    Text="{Binding DiaSalida, StringFormat='Dia: {0:dd/MM/yyyy}'}"/>
-                                <Label
+                                    Orientation="Horizontal">
+                                        <Label
+                                        Text="{i18n:Translate DayLbl}"/>
+                                        <Label
+                                        Text="{Binding DiaSalida, StringFormat='{0:dd/MM/yyyy}'}"/>
+                                    </StackLayout>
+                                    <Label
                                     Grid.Row="1"
                                     Grid.Column="0"
                                     Text="{Binding Bombero1}"/>
-                                <CheckBox
+                                    <CheckBox
                                     Grid.Row="1"
                                     Grid.Column="1"
                                     IsChecked="{Binding EsReten1}"
                                     IsEnabled="False"/>
-                                <Label
+                                    <StackLayout
                                     Grid.Row="1"
                                     Grid.Column="2"
-                                    Text="{Binding HoraSalida, StringFormat='Salida: {0:HH:mm}'}"/>
-                                <Label
+                                    Orientation="Horizontal">
+                                        <Label
+                                        Text="{i18n:Translate DayLbl}"/>
+                                        <Label
+                                        Text="{Binding HoraSalida, StringFormat='{0:HH:mm}'}"/>
+                                    </StackLayout>
+                                    <Label
                                     Grid.Row="2"
                                     Grid.Column="0"
                                     Text="{Binding Bombero2}"/>
-                                <CheckBox
+                                    <CheckBox
                                     Grid.Row="2"
                                     Grid.Column="1"
                                     IsChecked="{Binding EsReten2}"
                                     IsEnabled="False"/>
-                                <Label 
-                                    Grid.Row="2"
-                                    Grid.Column="2"
-                                    Text="{Binding HoraRegreso, StringFormat='Regreso: {0:HH:mm}'}"/>
-                                <Image
+                                    <StackLayout
+                                   Grid.Row="2"
+                                   Grid.Column="2"
+                                   Orientation="Horizontal">
+                                        <Label
+                                        Text="{i18n:Translate ReturnLbl}"/>
+                                        <Label 
+                                        Text="{Binding HoraRegreso, StringFormat='{0:HH:mm}'}"/>
+                                    </StackLayout>
+                                    <Image
                                     Grid.Row="1"
                                     Grid.Column="3"
                                     Source="ic_chevron_right"
-                                    VerticalOptions="Center"
-                                />
-                            </Grid>
+                                    VerticalOptions="Center"/>
+                                </Grid>
+                            </Frame>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

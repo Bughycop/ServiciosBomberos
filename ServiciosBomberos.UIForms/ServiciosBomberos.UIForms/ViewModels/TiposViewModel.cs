@@ -28,6 +28,11 @@
             set => this.SetValue(ref this.isRefreshing, value);
         }
         #endregion
+
+        #region Comandos
+
+        #endregion
+
         #region Constructores
         public TiposViewModel()
         {
@@ -86,7 +91,7 @@
         public void UpdateTipoInList(Tipo tipo)
         {
             var previousTipo = this.myTipos.Where(t => t.Id == tipo.Id).FirstOrDefault();
-            if (previousTipo!=null)
+            if (previousTipo != null)
             {
                 this.myTipos.Remove(previousTipo);
             }
@@ -97,7 +102,7 @@
         public void DeleteTipoinList(int tipoId)
         {
             var previousTipo = this.myTipos.Where(t => t.Id == tipoId).FirstOrDefault();
-            if (previousTipo!=null)
+            if (previousTipo != null)
             {
                 this.myTipos.Remove(previousTipo);
             }
@@ -106,17 +111,19 @@
 
         private void RefreshTiposList()
         {
-            this.Tipos = new ObservableCollection<TipoItemViewModel>(
-                this.myTipos.Select(t => new TipoItemViewModel
-                {
-                    Id = t.Id,
-                    Nombre = t.Nombre,
-                    Prioridad = t.Prioridad,
-                    User = t.User
-                })
-                .OrderBy(t => t.Nombre)
-                .ToList());
-        }
+                this.Tipos = new ObservableCollection<TipoItemViewModel>(
+                    this.myTipos.Select(t => new TipoItemViewModel
+                    {
+                        Id = t.Id,
+                        Nombre = t.Nombre,
+                        Prioridad = t.Prioridad,
+                        User = t.User
+                    })
+                    .OrderBy(t => t.Nombre)
+                    .ToList());
+            }
+
+
         #endregion
     }
 }

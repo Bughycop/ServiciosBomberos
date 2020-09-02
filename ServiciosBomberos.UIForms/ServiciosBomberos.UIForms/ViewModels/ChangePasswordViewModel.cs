@@ -1,11 +1,11 @@
 ﻿namespace ServiciosBomberos.UIForms.ViewModels
 {
-    using GalaSoft.MvvmLight.Command;
-    using ServiciosBomberos.Common.Helpers;
-    using ServiciosBomberos.Common.Models;
-    using ServiciosBomberos.Common.Services;
-    using System;
     using System.Windows.Input;
+    using Common.Helpers;
+    using Common.Models;
+    using Common.Services;
+    using GalaSoft.MvvmLight.Command;
+    using UIForms.Helpers;
     using Xamarin.Forms;
 
     public class ChangePasswordViewModel : BaseViewModel
@@ -56,54 +56,54 @@
             if (string.IsNullOrEmpty(CurrentPassword))
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "ERROR",
-                    "Debe insertar la Contraseña actual",
-                    "Aceptar");
+                    Languages.ErrorLbl,
+                    Languages.PasswordActualLbl,
+                    Languages.AcceptLbl);
                 return;
             }
 
             if (!MainViewModel.GetInstance().USerPassword.Equals(this.CurrentPassword))
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "ERROR",
-                    "La Contraseña es incorrecta",
-                    "Aceptar");
+                    Languages.ErrorLbl,
+                    Languages.PasswordIncorrectLbl,
+                    Languages.AcceptLbl);
                 return;
             }
 
             if (string.IsNullOrEmpty(this.NewPassword))
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "ERROR",
-                    "Inserte nueva Contraseña",
-                    "Aceptar");
+                    Languages.ErrorLbl,
+                    Languages.PasswordNewLbl,
+                    Languages.AcceptLbl);
                 return;
             }
 
             if (NewPassword.Length < 6)
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "ERROR",
-                    "La Contraseña debe tener al menos 6 carácteres",
-                    "Aceptar");
+                    Languages.ErrorLbl,
+                    Languages.PasswordLengthLbl,
+                    Languages.AcceptLbl);
                 return;
             }
 
             if (string.IsNullOrEmpty(ConfirmPassword))
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "ERROR",
-                    "Debe confirmar la Contraseña",
-                    "Aceptar");
+                    Languages.ErrorLbl,
+                    Languages.PasswordConfirmLbl,
+                    Languages.AcceptLbl);
                 return;
             }
 
             if (!this.NewPassword.Equals(ConfirmPassword))
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "ERROR",
-                    "La Contraseña y la Confirmación no coinciden",
-                    "Aceptar");
+                    Languages.ErrorLbl,
+                    Languages.PasswordMatchLbl,
+                    Languages.AcceptLbl);
                 return;
             }
 
@@ -112,9 +112,9 @@
             if (!connection.IsSuccess)
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "ERROR",
+                    Languages.ErrorLbl,
                     connection.Message,
-                    "Aceptar");
+                    Languages.AcceptLbl);
                 return;
             }
 
@@ -144,9 +144,9 @@
             if (!response.IsSuccess)
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "ERROR",
+                    Languages.ErrorLbl,
                     response.Message,
-                    "Aceptar");
+                    Languages.AcceptLbl);
                 return;
             }
 
@@ -154,9 +154,9 @@
             Settings.UserPassword = this.NewPassword;
 
             await Application.Current.MainPage.DisplayAlert(
-                "OK",
+                Languages.OkLbl,
                 response.Message,
-                "Aceptar");
+                Languages.AcceptLbl);
 
             await App.Navigator.PopAsync();
         }

@@ -4,6 +4,7 @@
     using Common.Models;
     using Common.Services;
     using GalaSoft.MvvmLight.Command;
+    using Helpers;
     using Xamarin.Forms;
 
     public class EditTipoSalidaViewModel : BaseViewModel
@@ -45,18 +46,18 @@
             if (string.IsNullOrEmpty(this.Tipo.Nombre))
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "ERROR",
-                    "Debe insertar un nombre para el tipo de Servicio",
-                    "Aceptar");
+                    Languages.ErrorLbl,
+                    Languages.ServiceTypeLbl,
+                    Languages.AcceptLbl);
                 return;
             }
 
             if (string.IsNullOrEmpty(this.Tipo.Prioridad))
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "ERROR",
-                    "Debe elegir una prioridad para el Tipo de Servicio",
-                    "Aceptar");
+                    Languages.ErrorLbl,
+                    Languages.ChooseCategoryLbl,
+                    Languages.AcceptLbl);
                 return;
             }
 
@@ -65,9 +66,9 @@
             if (!connection.IsSuccess)
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "ERROR",
+                    Languages.ErrorLbl,
                     connection.Message,
-                    "Aceptar");
+                    Languages.AcceptLbl);
                 return;
             }
 
@@ -90,9 +91,9 @@
             if (!response.IsSuccess)
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "ERROR",
+                    Languages.ErrorLbl,
                     response.Message,
-                    "Aceptar");
+                    Languages.AcceptLbl);
                 return;
             }
 
@@ -104,10 +105,10 @@
         private async void Delete()
         {
             var confirm = await Application.Current.MainPage.DisplayAlert(
-                "Confirme",
-                "¿Esta seguro de borrar el Tipo de Salida?",
-                "SI",
-                "NO");
+                Languages.ConfirmLbl,
+                Languages.SureDeleteLbl,
+                Languages.YesLbl,
+                Languages.NoLbl);
 
             if (!confirm)
             {
@@ -132,9 +133,9 @@
             if (!response.IsSuccess)
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "ERROR",
+                    Languages.ErrorLbl,
                     response.Message,
-                    "Aceptar");
+                    Languages.AcceptLbl);
                 return;
             }
 

@@ -1,0 +1,402 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AcceptLbl" xml:space="preserve">
+    <value>Aceptar</value>
+  </data>
+  <data name="ErrorLbl" xml:space="preserve">
+    <value>ERROR</value>
+  </data>
+  <data name="EmailErrorLbl" xml:space="preserve">
+    <value>Debe introducir un correo electrónico</value>
+  </data>
+  <data name="PasswordErrorLbl" xml:space="preserve">
+    <value>Debe introducir una contraseña</value>
+  </data>
+  <data name="WrongLoginLbl" xml:space="preserve">
+    <value>Email o contraseña incorrecto</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Inicio de Sesión</value>
+  </data>
+  <data name="EmailLbl" xml:space="preserve">
+    <value>Correo electrónico</value>
+  </data>
+  <data name="EmailPlaceHolder" xml:space="preserve">
+    <value>Introduzca su correo electrónico...</value>
+  </data>
+  <data name="PasswordPlaceHolder" xml:space="preserve">
+    <value>Escriba la contraseña...</value>
+  </data>
+  <data name="RememberLbl" xml:space="preserve">
+    <value>Recuérdame en este dispositivo</value>
+  </data>
+  <data name="PasswordLbl" xml:space="preserve">
+    <value>Contraseña</value>
+  </data>
+  <data name="ForgotPasswordLbl" xml:space="preserve">
+    <value>¿Olvidó su contraseña?</value>
+  </data>
+  <data name="ServicesTitle" xml:space="preserve">
+    <value>Servicios Realizados</value>
+  </data>
+  <data name="DayLbl" xml:space="preserve">
+    <value>Día:</value>
+  </data>
+  <data name="ReturnLbl" xml:space="preserve">
+    <value>Regreso:</value>
+  </data>
+  <data name="FiremanLbl" xml:space="preserve">
+    <value>Bomberos</value>
+  </data>
+  <data name="ReinforcementLbl" xml:space="preserve">
+    <value>Retén</value>
+  </data>
+  <data name="TypesTitle" xml:space="preserve">
+    <value>Tipos de Servicio</value>
+  </data>
+  <data name="MenuLbl" xml:space="preserve">
+    <value>Menú</value>
+  </data>
+  <data name="WelcomeLbl" xml:space="preserve">
+    <value>Bienvenido</value>
+  </data>
+  <data name="AboutLbl" xml:space="preserve">
+    <value>Acerca de</value>
+  </data>
+  <data name="ModifyUserLbl" xml:space="preserve">
+    <value>Modificar Usuario...</value>
+  </data>
+  <data name="LogoutLbl" xml:space="preserve">
+    <value>Cerrar sesión</value>
+  </data>
+  <data name="RequiredFiremanLbl" xml:space="preserve">
+    <value>El primer Bombero es obligatorio...</value>
+  </data>
+  <data name="RequiredInitHourLbl" xml:space="preserve">
+    <value>Se requiere la hora inicial...</value>
+  </data>
+  <data name="RequiredFinishHourLbl" xml:space="preserve">
+    <value>Se requiere hora de finalización...</value>
+  </data>
+  <data name="ServiceTypeLbl" xml:space="preserve">
+    <value>Debe elegir un tipo de servicio...</value>
+  </data>
+  <data name="InsertNameLbl" xml:space="preserve">
+    <value>Debe introducir un nombre...</value>
+  </data>
+  <data name="ChooseCategoryLbl" xml:space="preserve">
+    <value>Debe elegir una prioridad...</value>
+  </data>
+  <data name="OkLbl" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="PasswordMatchLbl" xml:space="preserve">
+    <value>La Contraseña y la Confirmación no coinciden</value>
+  </data>
+  <data name="PasswordConfirmLbl" xml:space="preserve">
+    <value>Debe confirmar la Contraseña</value>
+  </data>
+  <data name="PasswordLengthLbl" xml:space="preserve">
+    <value>La Contraseña debe tener al menos 6 carácteres</value>
+  </data>
+  <data name="PasswordNewLbl" xml:space="preserve">
+    <value>Inserte nueva Contraseña</value>
+  </data>
+  <data name="PasswordIncorrectLbl" xml:space="preserve">
+    <value>La Contraseña es incorrecta</value>
+  </data>
+  <data name="PasswordActualLbl" xml:space="preserve">
+    <value>Debe insertar la Contraseña actual</value>
+  </data>
+  <data name="ConfirmLbl" xml:space="preserve">
+    <value>Confirmar</value>
+  </data>
+  <data name="SureDeleteLbl" xml:space="preserve">
+    <value>¿Esta seguro de borrar el Tipo de Servicio?</value>
+  </data>
+  <data name="YesLbl" xml:space="preserve">
+    <value>Sí</value>
+  </data>
+  <data name="NoLbl" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="RequiredFirstNameLbl" xml:space="preserve">
+    <value>Debe insertar un Nombre</value>
+  </data>
+  <data name="RequiredSecondNameLbl" xml:space="preserve">
+    <value>Debe insertar un Apellido</value>
+  </data>
+  <data name="RequiredTelephoneNumberLbl" xml:space="preserve">
+    <value>Necesito su numero de Teléfono</value>
+  </data>
+  <data name="UserChangedLbl" xml:space="preserve">
+    <value>El Usuario ha sido modificado con éxito</value>
+  </data>
+  <data name="SuEmailLbl" xml:space="preserve">
+    <value>Introduzca su Email</value>
+  </data>
+  <data name="ValidEmailLbl" xml:space="preserve">
+    <value>Debe insertar un Email válido</value>
+  </data>
+  <data name="AboutTxtLbl1" xml:space="preserve">
+    <value>Si tiene algun problema con el programa</value>
+  </data>
+  <data name="AboutTxtLbl2" xml:space="preserve">
+    <value>contacte con el siguiente Email</value>
+  </data>
+  <data name="NewServiceLbl" xml:space="preserve">
+    <value>Nuevo Servicio</value>
+  </data>
+  <data name="DateServiceLbl" xml:space="preserve">
+    <value>Fecha del Servicio</value>
+  </data>
+  <data name="Fireman1Lbl" xml:space="preserve">
+    <value>Bombero</value>
+  </data>
+  <data name="SelectFiremanLbl" xml:space="preserve">
+    <value>Seleccione un Bombero</value>
+  </data>
+  <data name="StartHourLbl" xml:space="preserve">
+    <value>Hora de inicio</value>
+  </data>
+  <data name="FinishHourLbl" xml:space="preserve">
+    <value>Hora final</value>
+  </data>
+  <data name="TypeOfServiceLbl" xml:space="preserve">
+    <value>Tipo de Servicio</value>
+  </data>
+  <data name="SelectServiceLbl" xml:space="preserve">
+    <value>Seleccione el tipo de Servicio</value>
+  </data>
+  <data name="ServiceNotesLbl" xml:space="preserve">
+    <value>Observaciones del Servicio</value>
+  </data>
+  <data name="SaveLbl" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
+  <data name="ServiceTypeTitle" xml:space="preserve">
+    <value>Nuevo Tipo de Servicio</value>
+  </data>
+  <data name="TypeNameAssygnLbl" xml:space="preserve">
+    <value>Asigne un nombre al Servicio...</value>
+  </data>
+  <data name="PriorityLbl" xml:space="preserve">
+    <value>Prioridad</value>
+  </data>
+  <data name="SelecPriorityLbl" xml:space="preserve">
+    <value>Escoja la prioridad</value>
+  </data>
+  <data name="ChangePasswordTitle" xml:space="preserve">
+    <value>Cambiar Contraseña</value>
+  </data>
+  <data name="ActualPasswordLbl" xml:space="preserve">
+    <value>Contraseña actual</value>
+  </data>
+  <data name="NewPasswordLbl" xml:space="preserve">
+    <value>Nueva contraseña</value>
+  </data>
+  <data name="InsertNewPasswordLbl" xml:space="preserve">
+    <value>Inserte su nueva Contraseña</value>
+  </data>
+  <data name="ConfirmPasswordLbl" xml:space="preserve">
+    <value>Confirme Contraseña</value>
+  </data>
+  <data name="ConfirmPasswordPlhold" xml:space="preserve">
+    <value>Confirme su nueva Contraseña...</value>
+  </data>
+  <data name="EditServiceTitle" xml:space="preserve">
+    <value>Edite el Servicio</value>
+  </data>
+  <data name="EditServiceTypeTitle" xml:space="preserve">
+    <value>Edite el tipo de Servicio</value>
+  </data>
+  <data name="ModifyUserTitle" xml:space="preserve">
+    <value>Modifique los datos del Usuario</value>
+  </data>
+  <data name="NameLbl" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="LastNameLbl" xml:space="preserve">
+    <value>primer Apellido</value>
+  </data>
+  <data name="LastNameLblBis" xml:space="preserve">
+    <value>segundo Apellido</value>
+  </data>
+  <data name="TelephoneNumberlbl" xml:space="preserve">
+    <value>Número de teléfono</value>
+  </data>
+  <data name="PasswordRecoverTitle" xml:space="preserve">
+    <value>Recupere su Contraseña</value>
+  </data>
+  <data name="StatisticsLbl" xml:space="preserve">
+    <value>Estadísticas</value>
+  </data>
+  <data name="TotalHoursLbl" xml:space="preserve">
+    <value>Total de horas</value>
+  </data>
+  <data name="DataLbl" xml:space="preserve">
+    <value>Datos</value>
+  </data>
+  <data name="GraphLbl" xml:space="preserve">
+    <value>Gráfico</value>
+  </data>
+  <data name="JanuaryLbl" xml:space="preserve">
+    <value>Enero</value>
+  </data>
+  <data name="FebruaryLbl" xml:space="preserve">
+    <value>Febrero</value>
+  </data>
+  <data name="MarchLbl" xml:space="preserve">
+    <value>Marzo</value>
+  </data>
+  <data name="AprilLbl" xml:space="preserve">
+    <value>Abril</value>
+  </data>
+  <data name="MayLbl" xml:space="preserve">
+    <value>Mayo</value>
+  </data>
+  <data name="JuneLbl" xml:space="preserve">
+    <value>Junio</value>
+  </data>
+  <data name="JulyLbl" xml:space="preserve">
+    <value>Julio</value>
+  </data>
+  <data name="AugustLbl" xml:space="preserve">
+    <value>Agosto</value>
+  </data>
+  <data name="SeptemberLbl" xml:space="preserve">
+    <value>Septiembre</value>
+  </data>
+  <data name="OctoberLbl" xml:space="preserve">
+    <value>Octubre</value>
+  </data>
+  <data name="NovemberLbl" xml:space="preserve">
+    <value>Noviembre</value>
+  </data>
+  <data name="DecemberLbl" xml:space="preserve">
+    <value>Diciembre</value>
+  </data>
+  <data name="YearLbl" xml:space="preserve">
+    <value>Año</value>
+  </data>
+  <data name="SelectMonthLbl" xml:space="preserve">
+    <value>Elija un mes</value>
+  </data>
+</root>

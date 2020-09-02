@@ -3,10 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:i18n="clr-namespace:ServiciosBomberos.UIForms.Helpers"
              mc:Ignorable="d"
              x:Class="ServiciosBomberos.UIForms.Views.ProfilePage"
              BindingContext="{Binding Main,Source={StaticResource Locator}}"
-             Title="Modificar Datos Usuario">
+             Title="{i18n:Translate ModifyUserTitle}">
     <ContentPage.Content>
         <ScrollView BindingContext="{Binding Profile}">
             <StackLayout
@@ -19,43 +20,39 @@
                     <Label
                         Grid.Column="0"
                         Grid.Row="0"
-                        Text="Nombre"
+                        Text="{i18n:Translate NameLbl}"
                         VerticalOptions="Center"/>
                     <Entry
                         Grid.Column="1"
                         Grid.Row="0"
-                        Placeholder="Ponga su nombre..."
                         Text="{Binding User.Nombre}"/>
                     <Label
                         Grid.Column="0"
                         Grid.Row="1"
-                        Text="Primer Apellido"
+                        Text="{i18n:Translate LastNameLbl}"
                         VerticalOptions="Center"/>
                     <Entry
                         Grid.Column="1"
                         Grid.Row="1"
-                        Placeholder="Ponga su primer Apellido..."
                         Text="{Binding User.PrimerApellido}"/>
                     <Label
                         Grid.Column="0"
                         Grid.Row="2"
-                        Text="Segundo Apellido"
+                        Text="{i18n:Translate LastNameLblBis}"
                         VerticalOptions="Center"/>
                     <Entry
                         Grid.Column="1"
                         Grid.Row="2"
-                        Placeholder="Ponga su segundo Apellido..."
                         Text="{Binding User.SegundoApellido}"/>
                     <Label
                         Grid.Column="0"
                         Grid.Row="3"
-                        Text="Teléfono"
+                        Text="{i18n:Translate TelephoneNumberlbl}"
                         VerticalOptions="Center"/>
                     <Entry
                         Grid.Column="1"
                         Grid.Row="3"
                         Keyboard="Telephone"
-                        Placeholder="Ponga Teléfono..."
                         Text="{Binding User.PhoneNumber}"/>
                 </Grid>
                 <ActivityIndicator
@@ -71,7 +68,7 @@
                         HeightRequest="52"
                         HorizontalOptions="FillAndExpand"
                         IsEnabled="{Binding IsEnabled}"
-                        Text="Guardar Cambios"
+                        Text="{i18n:Translate SaveLbl}"
                         TextColor="White">
                     </Button>
                     <Button
@@ -81,7 +78,7 @@
                         HeightRequest="52"
                         HorizontalOptions="FillAndExpand"
                         IsEnabled="{Binding IsEnabled}"
-                        Text="Modificar Password"
+                        Text="{i18n:Translate ChangePasswordTitle}"
                         TextColor="White">
                     </Button>
                 </StackLayout>

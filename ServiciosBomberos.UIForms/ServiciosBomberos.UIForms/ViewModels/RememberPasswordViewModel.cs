@@ -1,11 +1,11 @@
 ﻿namespace ServiciosBomberos.UIForms.ViewModels
 {
+    using System.Windows.Input;
+    using Common.Helpers;
+    using Common.Models;
     using Common.Services;
     using GalaSoft.MvvmLight.Command;
-    using ServiciosBomberos.Common.Helpers;
-    using ServiciosBomberos.Common.Models;
-    using System;
-    using System.Windows.Input;
+    using ServiciosBomberos.UIForms.Helpers;
     using Xamarin.Forms;
 
     public class RememberPasswordViewModel : BaseViewModel
@@ -17,7 +17,7 @@
         #endregion
 
         #region Propiedades
-        public bool IsRunning 
+        public bool IsRunning
         {
             get => this.isRunning;
             set => this.SetValue(ref this.isRunning, value);
@@ -49,18 +49,18 @@
             if (string.IsNullOrEmpty(this.Email))
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "ERROR",
-                    "Debe escribir su Email",
-                    "Aceptar");
+                    Languages.ErrorLbl,
+                    Languages.SuEmailLbl,
+                    Languages.AcceptLbl);
                 return;
             }
 
             if (!RegExHelper.IsValidEmail(this.Email))
             {
                 await Application.Current.MainPage.DisplayAlert(
-                  "ERROR",
-                  "Debe escribir un Email valido",
-                  "Aceptar");
+                    Languages.ErrorLbl,
+                    Languages.ValidEmailLbl,
+                    Languages.AcceptLbl);
                 return;
             }
 
@@ -69,9 +69,9 @@
             if (!connection.IsSuccess)
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "ERROR",
+                    Languages.ErrorLbl,
                     connection.Message,
-                    "Aceptar");
+                    Languages.AcceptLbl);
                 return;
             }
 
@@ -96,15 +96,15 @@
             if (!response.IsSuccess)
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "ERROR",
+                    Languages.ErrorLbl,
                     response.Message,
-                    "Aceptar");
+                    Languages.AcceptLbl);
             }
 
             await Application.Current.MainPage.DisplayAlert(
-                "OK",
+                Languages.OkLbl,
                 response.Message,
-                "Aceptar");
+                Languages.AcceptLbl);
             await Application.Current.MainPage.Navigation.PopAsync();
         }
         #endregion

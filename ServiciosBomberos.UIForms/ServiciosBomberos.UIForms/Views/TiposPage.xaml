@@ -3,10 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:i18n="clr-namespace:ServiciosBomberos.UIForms.Helpers"
              mc:Ignorable="d"
              x:Class="ServiciosBomberos.UIForms.Views.TiposPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="Tipos de Servicio">
+             BackgroundColor="Silver"
+             Title="{i18n:Translate TypesTitle}">
     <ContentPage.ToolbarItems>
         <ToolbarItem IconImageSource="add_bar_icon" Command="{Binding AddTipoSalidaCommand}"/>
     </ContentPage.ToolbarItems>
@@ -15,13 +17,19 @@
             BindingContext="{Binding Tipos}"
             Padding="8">
             <ListView
+                BackgroundColor="Silver"
                 IsRefreshing="{Binding IsRefreshing}"
                 HasUnevenRows="True"
                 ItemsSource="{Binding Tipos}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid>
+                            <Frame
+                                CornerRadius="10"
+                                HasShadow="True"
+                                Margin="5"
+                                Padding="5">
+                                <Grid>
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding SelectTipoCommand}"/>
                                 </Grid.GestureRecognizers>
@@ -46,7 +54,8 @@
                                     Grid.Column="2"
                                     Source="ic_chevron_right">
                                 </Image>
-                            </Grid>
+                                </Grid>
+                            </Frame>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

@@ -1,12 +1,12 @@
 ﻿namespace ServiciosBomberos.UIForms.ViewModels
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Collections.ObjectModel;
     using System.Linq;
     using System.Windows.Input;
     using Common.Models;
     using GalaSoft.MvvmLight.Command;
+    using ServiciosBomberos.UIForms.Helpers;
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     using Views;
 
     public class MainViewModel
@@ -29,6 +29,8 @@
         public LoginViewModel Login { get; set; }
 
         public SalidasViewModel Salidas { get; set; }
+
+        public EstadisticaSalidasViewModel Estadistica { get; set; }
 
         public TiposViewModel Tipos { get; set; }
 
@@ -83,28 +85,35 @@
                 {
                     Icon="ic_perm_device_information",
                     PageName="AboutPage",
-                    Title="Acerca de..."
+                    Title=Languages.AboutLbl
                 },
 
                 new Menu
                 {
                     Icon="ic_person_add",
                     PageName="ProfilePage",
-                    Title="Modificar Usuario"
+                    Title= Languages.ModifyUserLbl
                 },
 
                 new Menu
                 {
-                    Icon="ic_fiber_new",
-                    PageName="TiposPage",
-                    Title="Tipos de Servicio"
+                    Icon = "ic_fiber_new",
+                    PageName = "TiposPage",
+                    Title = Languages.TypesTitle
+                },
+
+                new Menu
+                {
+                    Icon = "ic_chart_outlined",
+                    PageName = "EstadisticaTabbedPage",
+                    Title = Languages.StatisticsLbl
                 },
 
                 new Menu
                 {
                     Icon="exit_phone",
                     PageName="LoginPage",
-                    Title="Cerrar Sesión"
+                    Title= Languages.LogoutLbl
                 },
             };
 

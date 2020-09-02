@@ -3,24 +3,33 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:i18n="clr-namespace:ServiciosBomberos.UIForms.Helpers"
              mc:Ignorable="d"
              x:Class="ServiciosBomberos.UIForms.Views.MenuPage"
-              BackgroundColor="#6F5EB4"
+              BackgroundColor="#FF1118C6"
              BindingContext="{Binding Main,Source={StaticResource Locator}}"
              Title="Menu">
     <ContentPage.Content>
         <StackLayout
-            Padding="10">
+            Padding="5">
             <Image
                 HeightRequest="150"
                 Source="BomberoFuego">
             </Image>
-            <Label
-                FontAttributes="Bold"
-                FontSize="Large"
-                Text="{Binding User.NombreCompleto, StringFormat='Bienvenido: {0}'}"
-                TextColor="Yellow">
-            </Label>
+            <StackLayout
+                Orientation="Horizontal">
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="Large"
+                    Text="{i18n:Translate WelcomeLbl}"
+                    TextColor="Yellow"/>
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="Large"
+                    Text="{Binding User.NombreCompleto}"
+                    TextColor="Yellow">
+                </Label>               
+            </StackLayout>
                  <ListView
                 BackgroundColor="Transparent"
                 ItemsSource="{Binding Menus}"

@@ -3,10 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:i18n="clr-namespace:ServiciosBomberos.UIForms.Helpers"
              mc:Ignorable="d"
              x:Class="ServiciosBomberos.UIForms.Views.AddSalidaPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="Muevo Servicio">
+             Title="{i18n:Translate NewServiceLbl}">
     <ContentPage.Content>
         <ScrollView
             BindingContext="{Binding AddSalida}">
@@ -20,7 +21,7 @@
                     <Label
                         Grid.Column="0"
                         Grid.Row="0"
-                        Text="Dia del Servicio"
+                        Text="{i18n:Translate DateServiceLbl}"
                         FontSize="Medium"
                         VerticalOptions="Center">
                     </Label>
@@ -31,13 +32,14 @@
                     <Label
                         Grid.Column="0"
                         Grid.Row="1"
-                        Text="Bombero"
+                        Text="{i18n:Translate Fireman1Lbl}"
                         FontSize="Medium"
                         VerticalOptions="Center">
                     </Label>
                     <Picker
                         Grid.Column="1"
                         Grid.Row="1"
+                        Title="{i18n:Translate SelectFiremanLbl}"
                         ItemDisplayBinding="{Binding Text}"
                         ItemsSource="{Binding Bomberos}"
                         SelectedItem="{Binding BomberoCombo1}">
@@ -45,7 +47,7 @@
                     <Label
                         Grid.Column="0"
                         Grid.Row="2"
-                        Text="Retén"
+                        Text="{i18n:Translate ReinforcementLbl}"
                         FontSize="Medium"
                         VerticalOptions="Center"/>
                     <CheckBox
@@ -56,14 +58,14 @@
                     <Label
                         Grid.Column="0"
                         Grid.Row="3"
-                        Text="Bombero"
+                        Text="{i18n:Translate Fireman1Lbl}"
                         FontSize="Medium"
                         VerticalOptions="Center">
                     </Label>
                     <Picker
                         Grid.Column="1"
                         Grid.Row="3"
-                        Title="Seleccione un Bombero"
+                        Title="{i18n:Translate SelectFiremanLbl}"
                         ItemDisplayBinding="{Binding Text}"
                         ItemsSource="{Binding Bomberos}"
                         SelectedItem="{Binding BomberoCombo2}">
@@ -71,7 +73,7 @@
                     <Label
                         Grid.Column="0"
                         Grid.Row="4"
-                        Text="Retén"
+                        Text="{i18n:Translate ReinforcementLbl}"
                         FontSize="Medium"
                         VerticalOptions="Center"/>
                     <CheckBox
@@ -82,7 +84,7 @@
                     <Label
                         Grid.Column="0"
                         Grid.Row="5"
-                        Text="Hora Inicio"
+                        Text="{i18n:Translate StartHourLbl}"
                         FontSize="Medium"
                         VerticalOptions="Center"/>
                     <TimePicker
@@ -93,7 +95,7 @@
                     <Label
                         Grid.Column="0"
                         Grid.Row="6"
-                        Text="Hora Inicio"
+                        Text="{i18n:Translate FinishHourLbl}"
                         FontSize="Medium"
                         VerticalOptions="Center"/>
                     <TimePicker
@@ -104,24 +106,24 @@
                     <Label
                         Grid.Column="0"
                         Grid.Row="7"
-                        Text="Tipo de Servicio"
+                        Text="{i18n:Translate TypeOfServiceLbl}"
                         FontSize="Medium"
                         VerticalOptions="Center"/>
                     <Picker
                         Grid.Column="1"
                         Grid.Row="7"
-                        Title="Seleccione Servicio"
+                        Title="{i18n:Translate ServiceTypeLbl}"
                         ItemDisplayBinding="{Binding Nombre}"
                         ItemsSource="{Binding Tipos}"
                         SelectedItem="{Binding TipoCombo}"/>
                     <Label
                         Grid.Column="0"
                         Grid.Row="8"
-                        Text="Notas Servicio"
+                        Text= "{i18n:Translate ServiceNotesLbl}"
                         VerticalOptions="Center">
                     </Label>
                     <Editor
-                        Text="{Binding Descripcion}"
+                        Text= "{Binding Descripcion}"
                         Grid.Column="1"
                         Grid.Row="8">
                     </Editor>
@@ -130,14 +132,12 @@
                     IsRunning="{Binding IsRunning}">
                 </ActivityIndicator>
                 <Button
-                    Grid.Row="9"
-                    Grid.ColumnSpan="2"
                     BackgroundColor="Navy"
                     Command="{Binding SaveSalidaCommand}"
                     CornerRadius="23"
                     HeightRequest="46"
                     IsEnabled="{Binding IsEnabled}"
-                    Text="Guardar"
+                    Text="{i18n:Translate SaveLbl}"
                     TextColor="White"
                     VerticalOptions="EndAndExpand">
                 </Button>

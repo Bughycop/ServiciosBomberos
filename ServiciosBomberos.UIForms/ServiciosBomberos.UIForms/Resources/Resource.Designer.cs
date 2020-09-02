@@ -22,7 +22,7 @@ namespace ServiciosBomberos.UIForms.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resource {
+    public class Resource {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace ServiciosBomberos.UIForms.Resources {
         ///   Devuelve la instancia de ResourceManager almacenada en caché utilizada por esta clase.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ServiciosBomberos.UIForms.Resources.Resource", typeof(Resource).Assembly);
@@ -51,12 +51,858 @@ namespace ServiciosBomberos.UIForms.Resources {
         ///   búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a About.
+        /// </summary>
+        public static string AboutLbl {
+            get {
+                return ResourceManager.GetString("AboutLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a If you have a problem with the program.
+        /// </summary>
+        public static string AboutTxtLbl1 {
+            get {
+                return ResourceManager.GetString("AboutTxtLbl1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a contact the following Email.
+        /// </summary>
+        public static string AboutTxtLbl2 {
+            get {
+                return ResourceManager.GetString("AboutTxtLbl2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Accept.
+        /// </summary>
+        public static string AcceptLbl {
+            get {
+                return ResourceManager.GetString("AcceptLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Current password.
+        /// </summary>
+        public static string ActualPasswordLbl {
+            get {
+                return ResourceManager.GetString("ActualPasswordLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a April.
+        /// </summary>
+        public static string AprilLbl {
+            get {
+                return ResourceManager.GetString("AprilLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a August.
+        /// </summary>
+        public static string AugustLbl {
+            get {
+                return ResourceManager.GetString("AugustLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Change Password.
+        /// </summary>
+        public static string ChangePasswordTitle {
+            get {
+                return ResourceManager.GetString("ChangePasswordTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a You must choose a priority....
+        /// </summary>
+        public static string ChooseCategoryLbl {
+            get {
+                return ResourceManager.GetString("ChooseCategoryLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Confirm.
+        /// </summary>
+        public static string ConfirmLbl {
+            get {
+                return ResourceManager.GetString("ConfirmLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Confirm Password.
+        /// </summary>
+        public static string ConfirmPasswordLbl {
+            get {
+                return ResourceManager.GetString("ConfirmPasswordLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Confirm New Password....
+        /// </summary>
+        public static string ConfirmPasswordPlhold {
+            get {
+                return ResourceManager.GetString("ConfirmPasswordPlhold", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Data.
+        /// </summary>
+        public static string DataLbl {
+            get {
+                return ResourceManager.GetString("DataLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Service Date.
+        /// </summary>
+        public static string DateServiceLbl {
+            get {
+                return ResourceManager.GetString("DateServiceLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Day:.
+        /// </summary>
+        public static string DayLbl {
+            get {
+                return ResourceManager.GetString("DayLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a December.
+        /// </summary>
+        public static string DecemberLbl {
+            get {
+                return ResourceManager.GetString("DecemberLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Edit the Service.
+        /// </summary>
+        public static string EditServiceTitle {
+            get {
+                return ResourceManager.GetString("EditServiceTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Edit the type of Service.
+        /// </summary>
+        public static string EditServiceTypeTitle {
+            get {
+                return ResourceManager.GetString("EditServiceTypeTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a You must enter an Email.
+        /// </summary>
+        public static string EmailErrorLbl {
+            get {
+                return ResourceManager.GetString("EmailErrorLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Email.
+        /// </summary>
+        public static string EmailLbl {
+            get {
+                return ResourceManager.GetString("EmailLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Enter your Email....
+        /// </summary>
+        public static string EmailPlaceHolder {
+            get {
+                return ResourceManager.GetString("EmailPlaceHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a ERROR.
+        /// </summary>
+        public static string ErrorLbl {
+            get {
+                return ResourceManager.GetString("ErrorLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a February.
+        /// </summary>
+        public static string FebruaryLbl {
+            get {
+                return ResourceManager.GetString("FebruaryLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a End Hour.
+        /// </summary>
+        public static string FinishHourLbl {
+            get {
+                return ResourceManager.GetString("FinishHourLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Fireman.
+        /// </summary>
+        public static string Fireman1Lbl {
+            get {
+                return ResourceManager.GetString("Fireman1Lbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Firemen.
+        /// </summary>
+        public static string FiremanLbl {
+            get {
+                return ResourceManager.GetString("FiremanLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Forgot your password?.
+        /// </summary>
+        public static string ForgotPasswordLbl {
+            get {
+                return ResourceManager.GetString("ForgotPasswordLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Graphic.
+        /// </summary>
+        public static string GraphLbl {
+            get {
+                return ResourceManager.GetString("GraphLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a You must insert a Name....
+        /// </summary>
+        public static string InsertNameLbl {
+            get {
+                return ResourceManager.GetString("InsertNameLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Enter your new Password.
+        /// </summary>
+        public static string InsertNewPasswordLbl {
+            get {
+                return ResourceManager.GetString("InsertNewPasswordLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a January.
+        /// </summary>
+        public static string JanuaryLbl {
+            get {
+                return ResourceManager.GetString("JanuaryLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a July.
+        /// </summary>
+        public static string JulyLbl {
+            get {
+                return ResourceManager.GetString("JulyLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a June.
+        /// </summary>
+        public static string JuneLbl {
+            get {
+                return ResourceManager.GetString("JuneLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Last Name.
+        /// </summary>
+        public static string LastNameLbl {
+            get {
+                return ResourceManager.GetString("LastNameLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Last Name.
+        /// </summary>
+        public static string LastNameLblBis {
+            get {
+                return ResourceManager.GetString("LastNameLblBis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Login.
+        /// </summary>
+        public static string Login {
+            get {
+                return ResourceManager.GetString("Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Logout.
+        /// </summary>
+        public static string LogoutLbl {
+            get {
+                return ResourceManager.GetString("LogoutLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a March.
+        /// </summary>
+        public static string MarchLbl {
+            get {
+                return ResourceManager.GetString("MarchLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a May.
+        /// </summary>
+        public static string MayLbl {
+            get {
+                return ResourceManager.GetString("MayLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Menu.
+        /// </summary>
+        public static string MenuLbl {
+            get {
+                return ResourceManager.GetString("MenuLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Modify User....
+        /// </summary>
+        public static string ModifyUserLbl {
+            get {
+                return ResourceManager.GetString("ModifyUserLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Modify the User data.
+        /// </summary>
+        public static string ModifyUserTitle {
+            get {
+                return ResourceManager.GetString("ModifyUserTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Name.
+        /// </summary>
+        public static string NameLbl {
+            get {
+                return ResourceManager.GetString("NameLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a New Password.
+        /// </summary>
+        public static string NewPasswordLbl {
+            get {
+                return ResourceManager.GetString("NewPasswordLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a New service.
+        /// </summary>
+        public static string NewServiceLbl {
+            get {
+                return ResourceManager.GetString("NewServiceLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a No.
+        /// </summary>
+        public static string NoLbl {
+            get {
+                return ResourceManager.GetString("NoLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a November.
+        /// </summary>
+        public static string NovemberLbl {
+            get {
+                return ResourceManager.GetString("NovemberLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a October.
+        /// </summary>
+        public static string OctoberLbl {
+            get {
+                return ResourceManager.GetString("OctoberLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a OK.
+        /// </summary>
+        public static string OkLbl {
+            get {
+                return ResourceManager.GetString("OkLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a You must insert the current Password.
+        /// </summary>
+        public static string PasswordActualLbl {
+            get {
+                return ResourceManager.GetString("PasswordActualLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a You must confirm the Password.
+        /// </summary>
+        public static string PasswordConfirmLbl {
+            get {
+                return ResourceManager.GetString("PasswordConfirmLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a You must enter an Password.
+        /// </summary>
+        public static string PasswordErrorLbl {
+            get {
+                return ResourceManager.GetString("PasswordErrorLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Password is incorrect.
+        /// </summary>
+        public static string PasswordIncorrectLbl {
+            get {
+                return ResourceManager.GetString("PasswordIncorrectLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Password.
+        /// </summary>
+        public static string PasswordLbl {
+            get {
+                return ResourceManager.GetString("PasswordLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Password must be at least 6 characters.
+        /// </summary>
+        public static string PasswordLengthLbl {
+            get {
+                return ResourceManager.GetString("PasswordLengthLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Password and confirmation does not match.
+        /// </summary>
+        public static string PasswordMatchLbl {
+            get {
+                return ResourceManager.GetString("PasswordMatchLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Insert new password.
+        /// </summary>
+        public static string PasswordNewLbl {
+            get {
+                return ResourceManager.GetString("PasswordNewLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Enter your Password....
+        /// </summary>
+        public static string PasswordPlaceHolder {
+            get {
+                return ResourceManager.GetString("PasswordPlaceHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Recover your password.
+        /// </summary>
+        public static string PasswordRecoverTitle {
+            get {
+                return ResourceManager.GetString("PasswordRecoverTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Priority.
+        /// </summary>
+        public static string PriorityLbl {
+            get {
+                return ResourceManager.GetString("PriorityLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Reinforcement.
+        /// </summary>
+        public static string ReinforcementLbl {
+            get {
+                return ResourceManager.GetString("ReinforcementLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Remember me on this device.
+        /// </summary>
+        public static string RememberLbl {
+            get {
+                return ResourceManager.GetString("RememberLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Finish hour is required....
+        /// </summary>
+        public static string RequiredFinishHourLbl {
+            get {
+                return ResourceManager.GetString("RequiredFinishHourLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a First Fireman is required....
+        /// </summary>
+        public static string RequiredFiremanLbl {
+            get {
+                return ResourceManager.GetString("RequiredFiremanLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a You must insert a Name.
+        /// </summary>
+        public static string RequiredFirstNameLbl {
+            get {
+                return ResourceManager.GetString("RequiredFirstNameLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Init hour is required....
+        /// </summary>
+        public static string RequiredInitHourLbl {
+            get {
+                return ResourceManager.GetString("RequiredInitHourLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a You must insert a Last Name.
+        /// </summary>
+        public static string RequiredSecondNameLbl {
+            get {
+                return ResourceManager.GetString("RequiredSecondNameLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a I need your phone number.
+        /// </summary>
+        public static string RequiredTelephoneNumberLbl {
+            get {
+                return ResourceManager.GetString("RequiredTelephoneNumberLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Return:.
+        /// </summary>
+        public static string ReturnLbl {
+            get {
+                return ResourceManager.GetString("ReturnLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Save.
+        /// </summary>
+        public static string SaveLbl {
+            get {
+                return ResourceManager.GetString("SaveLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Choose the Priority.
+        /// </summary>
+        public static string SelecPriorityLbl {
+            get {
+                return ResourceManager.GetString("SelecPriorityLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Select a Fireman.
+        /// </summary>
+        public static string SelectFiremanLbl {
+            get {
+                return ResourceManager.GetString("SelectFiremanLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Choose a Month.
+        /// </summary>
+        public static string SelectMonthLbl {
+            get {
+                return ResourceManager.GetString("SelectMonthLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Select the service type.
+        /// </summary>
+        public static string SelectServiceLbl {
+            get {
+                return ResourceManager.GetString("SelectServiceLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a September.
+        /// </summary>
+        public static string SeptemberLbl {
+            get {
+                return ResourceManager.GetString("SeptemberLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Observations of the Service.
+        /// </summary>
+        public static string ServiceNotesLbl {
+            get {
+                return ResourceManager.GetString("ServiceNotesLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Services Performed.
+        /// </summary>
+        public static string ServicesTitle {
+            get {
+                return ResourceManager.GetString("ServicesTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a You must choose a type of service....
+        /// </summary>
+        public static string ServiceTypeLbl {
+            get {
+                return ResourceManager.GetString("ServiceTypeLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a New Service Type.
+        /// </summary>
+        public static string ServiceTypeTitle {
+            get {
+                return ResourceManager.GetString("ServiceTypeTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Starting Time.
+        /// </summary>
+        public static string StartHourLbl {
+            get {
+                return ResourceManager.GetString("StartHourLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Statistics.
+        /// </summary>
+        public static string StatisticsLbl {
+            get {
+                return ResourceManager.GetString("StatisticsLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Enter Your Email.
+        /// </summary>
+        public static string SuEmailLbl {
+            get {
+                return ResourceManager.GetString("SuEmailLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Are you sure to delete the Type of Service?.
+        /// </summary>
+        public static string SureDeleteLbl {
+            get {
+                return ResourceManager.GetString("SureDeleteLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Phone Number.
+        /// </summary>
+        public static string TelephoneNumberlbl {
+            get {
+                return ResourceManager.GetString("TelephoneNumberlbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Total Hours.
+        /// </summary>
+        public static string TotalHoursLbl {
+            get {
+                return ResourceManager.GetString("TotalHoursLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Give a name to the Service....
+        /// </summary>
+        public static string TypeNameAssygnLbl {
+            get {
+                return ResourceManager.GetString("TypeNameAssygnLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Service Type.
+        /// </summary>
+        public static string TypeOfServiceLbl {
+            get {
+                return ResourceManager.GetString("TypeOfServiceLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Service types.
+        /// </summary>
+        public static string TypesTitle {
+            get {
+                return ResourceManager.GetString("TypesTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a User has been successfully edited.
+        /// </summary>
+        public static string UserChangedLbl {
+            get {
+                return ResourceManager.GetString("UserChangedLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a You must insert a valid Email.
+        /// </summary>
+        public static string ValidEmailLbl {
+            get {
+                return ResourceManager.GetString("ValidEmailLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Welcome.
+        /// </summary>
+        public static string WelcomeLbl {
+            get {
+                return ResourceManager.GetString("WelcomeLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Email or Password incorrect.
+        /// </summary>
+        public static string WrongLoginLbl {
+            get {
+                return ResourceManager.GetString("WrongLoginLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Year.
+        /// </summary>
+        public static string YearLbl {
+            get {
+                return ResourceManager.GetString("YearLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Yes.
+        /// </summary>
+        public static string YesLbl {
+            get {
+                return ResourceManager.GetString("YesLbl", resourceCulture);
             }
         }
     }

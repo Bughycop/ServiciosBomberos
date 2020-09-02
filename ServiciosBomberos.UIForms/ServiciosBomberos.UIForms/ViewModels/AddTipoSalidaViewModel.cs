@@ -4,6 +4,7 @@
     using Common.Models;
     using Common.Services;
     using GalaSoft.MvvmLight.Command;
+    using ServiciosBomberos.UIForms.Helpers;
     using Xamarin.Forms;
 
     public class AddTipoSalidaViewModel : BaseViewModel
@@ -50,17 +51,18 @@
             if (string.IsNullOrEmpty(this.Nombre))
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "ERROR",
-                    "Debe insertar un nombre", "Aceptar");
+                    Languages.ErrorLbl,
+                    Languages.InsertNameLbl,
+                    Languages.AcceptLbl);
                 return;
             }
 
             if (string.IsNullOrEmpty(this.Prioridad))
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "ERROR",
-                    "Debe elegir una prioridad",
-                    "Aeptar");
+                    Languages.ErrorLbl,
+                    Languages.ChooseCategoryLbl,
+                    Languages.AcceptLbl);
                 return;
             }
 
@@ -69,9 +71,9 @@
             if (!connection.IsSuccess)
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "ERROR",
+                    Languages.ErrorLbl,
                     connection.Message,
-                    "Aceptar");
+                    Languages.AcceptLbl);
                 return;
             }
 
@@ -97,9 +99,9 @@
             if (!response.IsSuccess)
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "ERROR", 
+                    Languages.ErrorLbl, 
                     response.Message, 
-                    "Aceptar");
+                    Languages.AcceptLbl);
                 return;
             }
 

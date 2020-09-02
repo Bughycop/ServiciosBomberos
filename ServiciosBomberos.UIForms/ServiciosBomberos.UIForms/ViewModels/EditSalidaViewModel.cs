@@ -8,6 +8,7 @@
     using Common.Models;
     using GalaSoft.MvvmLight.Command;
     using ServiciosBomberos.Common.Services;
+    using ServiciosBomberos.UIForms.Helpers;
     using Xamarin.Forms;
 
     public class EditSalidaViewModel : BaseViewModel
@@ -29,7 +30,6 @@
         public Salida Salida { get; set; }
         public TimeSpan EditHoraSalida { get; set; }
         public TimeSpan EditHoraRegreso { get; set; }
-        public string Descripcion { get; set; }
 
         public Bombero BomberoCombo1
         {
@@ -93,36 +93,36 @@
             if (bomberoCombo1 == null)
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "ERROR",
-                    "El primer Bombero es obligatorio",
-                    "Aeptar");
+                    Languages.ErrorLbl,
+                    Languages.RequiredFiremanLbl,
+                    Languages.AcceptLbl);
                 return;
             }
 
             if (EditHoraSalida == TimeSpan.Zero)
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "ERROR",
-                    "Por favor indique hora de inicio",
-                    "Aceptar");
+                    Languages.ErrorLbl,
+                    Languages.RequiredInitHourLbl,
+                    Languages.AcceptLbl);
                 return;
             }
 
             if (EditHoraRegreso == TimeSpan.Zero)
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "ERROR",
-                    "Por favor indique hora de finalización",
-                    "Aceptar");
+                    Languages.ErrorLbl,
+                    Languages.RequiredFinishHourLbl,
+                    Languages.AcceptLbl);
                 return;
             }
 
             if (TipoCombo == null)
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "ERROR",
-                    "Debe elegir un tipo de servicio",
-                    "Aceptar");
+                    Languages.ErrorLbl,
+                    Languages.ServiceTypeLbl,
+                    Languages.AcceptLbl);
                 return;
             }
 
@@ -131,9 +131,9 @@
             if (!connection.IsSuccess)
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "ERROR",
+                    Languages.ErrorLbl,
                     connection.Message,
-                    "Aceptar");
+                    Languages.AcceptLbl);
                 return;
             }
 
@@ -144,7 +144,7 @@
             var response = await this.apiService.PutAsync(
                 url,
                 "/api",
-                "/Tipos",
+                "/Salidas",
                 this.Salida.Id,
                 this.Salida,
                 "bearer",
@@ -156,9 +156,9 @@
             if (!response.IsSuccess)
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "ERROR",
+                    Languages.ErrorLbl,
                     response.Message,
-                    "Aceptar");
+                    Languages.AcceptLbl);
                 return;
             }
 
@@ -175,9 +175,9 @@
             if (!connection.IsSuccess)
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "ERROR",
+                    Languages.ErrorLbl,
                     connection.Message,
-                    "Aceptar");
+                    Languages.AcceptLbl);
                 return;
             }
 
@@ -193,9 +193,9 @@
             if (!response.IsSuccess)
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "ERROR",
+                    Languages.ErrorLbl,
                     response.Message,
-                    "Aceptar");
+                    Languages.AcceptLbl);
                 return;
             }
 
@@ -232,9 +232,9 @@
             if (!connection.IsSuccess)
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "ERROR",
+                    Languages.ErrorLbl,
                     connection.Message,
-                    "Aceptar");
+                    Languages.AcceptLbl);
                 return;
             }
 
@@ -249,9 +249,9 @@
             if (!response.IsSuccess)
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "ERROR",
+                    Languages.ErrorLbl,
                     response.Message,
-                    "Aceptar");
+                    Languages.AcceptLbl);
                 return;
             }
 

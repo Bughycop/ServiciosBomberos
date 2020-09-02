@@ -6,6 +6,7 @@
     using Common.Services;
     using GalaSoft.MvvmLight.Command;
     using Newtonsoft.Json;
+    using ServiciosBomberos.UIForms.Helpers;
     using Views;
     using Xamarin.Forms;
 
@@ -59,27 +60,27 @@
             if (!connection.IsSuccess)
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "ERROR",
+                    Languages.ErrorLbl,
                     connection.Message,
-                    "Aceptar");
+                    Languages.AcceptLbl);
                 return;
             }
 
             if (string.IsNullOrEmpty(this.Email))
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "ERROR",
-                    "You must enter an Email...",
-                    "Accept");
+                    Languages.ErrorLbl,
+                    Languages.EmailErrorLbl,
+                    Languages.AcceptLbl);
                 return;
             }
 
             if (string.IsNullOrEmpty(this.Password))
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "ERROR",
-                    "You must enter an Password...",
-                    "Accept");
+                    Languages.ErrorLbl,
+                    Languages.PasswordErrorLbl,
+                    Languages.AcceptLbl);
                 return;
             }
 
@@ -105,7 +106,9 @@
             if (!response.IsSuccess)
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "ERROR", "Correo o Contraseña incorrecto", "Accept");
+                   Languages.ErrorLbl,
+                   Languages.WrongLoginLbl,
+                   Languages.AcceptLbl);
                 return;
             }
 

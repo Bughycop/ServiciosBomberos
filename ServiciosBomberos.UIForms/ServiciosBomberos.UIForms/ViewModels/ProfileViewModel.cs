@@ -1,11 +1,12 @@
 ﻿namespace ServiciosBomberos.UIForms.ViewModels
 {
+    using System.Windows.Input;
     using Common.Helpers;
     using Common.Models;
     using Common.Services;
     using GalaSoft.MvvmLight.Command;
+    using Helpers;
     using Newtonsoft.Json;
-    using System.Windows.Input;
     using Views;
     using Xamarin.Forms;
 
@@ -48,7 +49,7 @@
         {
             apiService = new ApiService();
             this.user = MainViewModel.GetInstance().User;
-            isEnabled = true;
+            this.IsEnabled = true;
 
         }
         #endregion
@@ -59,25 +60,25 @@
             if (string.IsNullOrEmpty(this.User.Nombre))
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "ERROR",
-                    "Debe poner un Nombre",
-                    "Aceptar");
+                    Languages.ErrorLbl,
+                    Languages.RequiredFirstNameLbl,
+                    Languages.AcceptLbl);
                 return;
             }
             if (string.IsNullOrEmpty(this.User.PrimerApellido))
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "ERROR",
-                    "Debe poner un Apellido",
-                    "Aceptar");
+                    Languages.ErrorLbl,
+                    Languages.RequiredSecondNameLbl,
+                    Languages.AcceptLbl);
                 return;
             }
             if (string.IsNullOrEmpty(this.User.PhoneNumber))
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "ERROR",
-                    "Necesito su numero de Teléfono",
-                    "Aceptar");
+                    Languages.ErrorLbl,
+                    Languages.RequiredTelephoneNumberLbl,
+                    Languages.AcceptLbl);
                 return;
             }
 
@@ -86,9 +87,9 @@
             if (!connection.IsSuccess)
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "ERROR",
+                    Languages.ErrorLbl,
                     connection.Message,
-                    "Aceptar");
+                    Languages.AcceptLbl);
                 return;
             }
 
@@ -110,9 +111,9 @@
             if (!response.IsSuccess)
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "ERROR",
+                    Languages.ErrorLbl,
                     response.Message,
-                    "Accept");
+                    Languages.AcceptLbl);
                 return;
             }
 
@@ -120,10 +121,11 @@
             Settings.User = JsonConvert.SerializeObject(this.User);
 
             await Application.Current.MainPage.DisplayAlert(
-                "OK",
-                "El Usuario ha sido modificado con éxito",
-                "Aceptar");
+                Languages.OkLbl,
+                Languages.UserChangedLbl,
+                Languages.AcceptLbl);
             await App.Navigator.PopAsync();
+
         }
 
         private async void ModifyPassword()

@@ -3,10 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:i18n="clr-namespace:ServiciosBomberos.UIForms.Helpers"
              mc:Ignorable="d"
              x:Class="ServiciosBomberos.UIForms.Views.EditTipoSalidaPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="Editar Tipo de Servicio">
+             Title="{i18n:Translate EditServiceTypeTitle}">
     <ContentPage.Content>
         <ScrollView
             BindingContext="{Binding EditTipoSalida}">
@@ -21,12 +22,12 @@
                         FontSize="Medium"
                         Grid.Column="0"
                         Grid.Row="0"
-                        Text="Tipo">
+                        Text="{i18n:Translate TypeOfServiceLbl}">
                     </Label>
                     <Entry
                         Grid.Column="1"
                         Grid.Row="0"
-                        Placeholder="Asigne un nombre..."
+                        Placeholder="{i18n:Translate TypeNameAssygnLbl}"
                         Text="{Binding Tipo.Nombre}">
                         <Entry.Keyboard>
                             <Keyboard x:FactoryMethod="Create">
@@ -40,12 +41,13 @@
                         FontSize="Medium"
                         Grid.Column="0"
                         Grid.Row="1"
-                        Text="Prioridad">
+                        Text="{i18n:Translate PriorityLbl}">
                     </Label>
                     <Picker
                         Grid.Column="1"
                         Grid.Row="1"
-                        SelectedItem="{Binding Tipo.Prioridad}">
+                        SelectedItem="{Binding Tipo.Prioridad}"
+                        Title="{i18n:Translate SelecPriorityLbl}">
                         <Picker.Items>
                             <x:String>ALTA</x:String>
                             <x:String>MEDIA</x:String>
@@ -63,7 +65,7 @@
                     HeightRequest="46"
                     CornerRadius="23"
                     IsEnabled="{Binding IsEnabled}"
-                    Text="Guardar cambios"
+                    Text="{Binding SaveTipoCommand}"
                     TextColor="White">
                 </Button>
             </StackLayout>

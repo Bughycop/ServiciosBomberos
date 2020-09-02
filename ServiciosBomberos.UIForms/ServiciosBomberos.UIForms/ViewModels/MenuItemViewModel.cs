@@ -26,6 +26,10 @@
                     mainViewModel.Tipos = new TiposViewModel();
                     await App.Navigator.PushAsync(new TiposPage());
                     break;
+                case "EstadisticaTabbedPage":
+                    mainViewModel.Estadistica = new EstadisticaSalidasViewModel();
+                    await App.Navigator.PushAsync(new EstadisticaTabbedPage());
+                    break;
                 case "ProfilePage":
                     mainViewModel.Profile = new ProfileViewModel();
                     await App.Navigator.PushAsync(new ProfilePage());

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ServiciosBomberos.UIForms.ViewModels"
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             xmlns:i18n="clr-namespace:ServiciosBomberos.UIForms.Helpers"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             x:Class="ServiciosBomberos.UIForms.Views.GraficoEstadisticoPage"
+             Title="{i18n:Translate GraphLbl}">
+    <ContentPage.BindingContext>
+        <local:EstadisticaSalidasViewModel/>
+    </ContentPage.BindingContext>
+
+    <chart:SfChart>
+        <chart:SfChart.PrimaryAxis>
+            <chart:CategoryAxis
+                LabelRotationAngle="-45"
+                LabelPlacement="BetweenTicks">
+                <chart:CategoryAxis.Title>
+                    <chart:ChartAxisTitle Text="{i18n:Translate TypesTitle}"/>
+                </chart:CategoryAxis.Title>
+            </chart:CategoryAxis>
+            </chart:SfChart.PrimaryAxis>
+        <chart:SfChart.SecondaryAxis>
+            <chart:NumericalAxis Interval="1"/>
+        </chart:SfChart.SecondaryAxis>
+        <chart:ColumnSeries
+            Color="Green"
+            ItemsSource="{Binding EstadisticaSalidas}"
+            XBindingPath="TipoServicio"
+            YBindingPath="NumeroServicios"/>
+    </chart:SfChart>
+
+</ContentPage>
