@@ -5,8 +5,6 @@
     using System.Collections.ObjectModel;
     using System.Linq;
     using Common.Models;
-    using ServiciosBomberos.UIForms.Helpers;
-    using Xamarin.Forms;
 
     public class EstadisticaSalidasViewModel : BaseViewModel
     {

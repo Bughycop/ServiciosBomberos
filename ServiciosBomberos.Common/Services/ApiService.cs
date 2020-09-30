@@ -21,7 +21,7 @@
                 return new Response
                 {
                     IsSuccess = false,
-                    Message = "Por favor conecte los datos de su Teléfono"
+                    Message = "Please, turn on your phone data or connect your WiFi"
                 };
             }
 
@@ -31,7 +31,7 @@
                 return new Response
                 {
                     IsSuccess = false,
-                    Message = "Por favor compruebe su conexion a Internet"
+                    Message = "Please, check your Internet connection"
                 };
             }
 

@@ -105,5 +105,9 @@
         public static string DecemberLbl => Resource.DecemberLbl;
         public static string YearLbl => Resource.YearLbl;
         public static string SelectMonthLbl => Resource.SelectMonthLbl;
+        public static string CheckConnectionMsg => Resource.CheckConnectionMsg;
+        public static string CheckInternetMsg => Resource.CheckInternetMsg;
+        public static string ServiceDurationLbl => Resource.ServiceDurationLbl;
+        public static string InitLbl => Resource.InitLbl;
     }
 }

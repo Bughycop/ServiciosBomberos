@@ -30,7 +30,7 @@
         public Salida Salida { get; set; }
         public TimeSpan EditHoraSalida { get; set; }
         public TimeSpan EditHoraRegreso { get; set; }
-
+        public TimeSpan TiempoServicio => this.EditHoraRegreso - this.EditHoraSalida;
         public Bombero BomberoCombo1
         {
             get => this.bomberoCombo1;

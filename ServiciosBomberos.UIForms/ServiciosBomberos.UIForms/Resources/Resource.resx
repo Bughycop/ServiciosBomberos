@@ -399,4 +399,16 @@
   <data name="SelectMonthLbl" xml:space="preserve">
     <value>Choose a Month</value>
   </data>
+  <data name="CheckConnectionMsg" xml:space="preserve">
+    <value>Please connect your phone data</value>
+  </data>
+  <data name="CheckInternetMsg" xml:space="preserve">
+    <value>Please Check Your Internet Connection</value>
+  </data>
+  <data name="ServiceDurationLbl" xml:space="preserve">
+    <value>Service duration</value>
+  </data>
+  <data name="InitLbl" xml:space="preserve">
+    <value>Init</value>
+  </data>
 </root>

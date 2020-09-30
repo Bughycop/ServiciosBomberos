@@ -133,6 +133,24 @@ namespace ServiciosBomberos.UIForms.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Please connect your phone data.
+        /// </summary>
+        public static string CheckConnectionMsg {
+            get {
+                return ResourceManager.GetString("CheckConnectionMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Please Check Your Internet Connection.
+        /// </summary>
+        public static string CheckInternetMsg {
+            get {
+                return ResourceManager.GetString("CheckInternetMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a You must choose a priority....
         /// </summary>
         public static string ChooseCategoryLbl {
@@ -309,6 +327,15 @@ namespace ServiciosBomberos.UIForms.Resources {
         public static string GraphLbl {
             get {
                 return ResourceManager.GetString("GraphLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Init.
+        /// </summary>
+        public static string InitLbl {
+            get {
+                return ResourceManager.GetString("InitLbl", resourceCulture);
             }
         }
         
@@ -732,6 +759,15 @@ namespace ServiciosBomberos.UIForms.Resources {
         public static string SeptemberLbl {
             get {
                 return ResourceManager.GetString("SeptemberLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Service duration.
+        /// </summary>
+        public static string ServiceDurationLbl {
+            get {
+                return ResourceManager.GetString("ServiceDurationLbl", resourceCulture);
             }
         }
         

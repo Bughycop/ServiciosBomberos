@@ -21,6 +21,7 @@
                     <Label
                         Grid.Column="0"
                         Grid.Row="0"
+                        VerticalOptions="Center"
                         Text="{i18n:Translate DateServiceLbl}"
                         FontSize="Medium">
                     </Label>
@@ -31,6 +32,7 @@
                     <Label
                         Grid.Column="0"
                         Grid.Row="1"
+                        VerticalOptions="Center"
                         Text="{i18n:Translate Fireman1Lbl}"
                         FontSize="Medium">
                     </Label>
@@ -45,6 +47,7 @@
                     <Label
                         Grid.Column="0"
                         Grid.Row="2"
+                        VerticalOptions="Center"
                         Text="{i18n:Translate ReinforcementLbl}"
                         FontSize="Medium">
                     </Label>
@@ -56,6 +59,7 @@
                     <Label
                         Grid.Column="0"
                         Grid.Row="3"
+                        VerticalOptions="Center"
                         Text="{i18n:Translate Fireman1Lbl}"
                         FontSize="Medium">
                     </Label>
@@ -70,6 +74,7 @@
                     <Label
                         Grid.Column="0"
                         Grid.Row="4"
+                        VerticalOptions="Center"
                         Text="{i18n:Translate ReinforcementLbl}"
                         FontSize="Medium">
                     </Label>
@@ -81,6 +86,7 @@
                     <Label
                         Grid.Column="0"
                         Grid.Row="5"
+                        VerticalOptions="Center"
                         Text="{i18n:Translate StartHourLbl}"
                         FontSize="Medium"/>
                     <TimePicker
@@ -91,6 +97,7 @@
                     <Label
                         Grid.Column="0"
                         Grid.Row="6"
+                        VerticalOptions="Center"
                         Text="{i18n:Translate FinishHourLbl}"
                         FontSize="Medium"/>
                     <TimePicker
@@ -101,6 +108,7 @@
                     <Label
                         Grid.Column="0"
                         Grid.Row="7"
+                        VerticalOptions="Center"
                         Text="{i18n:Translate TypeOfServiceLbl}"
                         FontSize="Medium"/>
                     <Picker
@@ -113,6 +121,7 @@
                     <Label
                         Grid.Column="0"
                         Grid.Row="8"
+                        VerticalOptions="Center"
                         Text="{i18n:Translate ServiceNotesLbl}">
                     </Label>
                     <Editor
@@ -120,6 +129,15 @@
                         Grid.Row="8"
                         Text="{Binding Salida.Descripcion}">
                     </Editor>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="9"
+                        Text="{i18n:Translate ServiceDurationLbl}"/>
+                    <Label
+                        Grid.Column="1"
+                        Grid.Row="9"
+                        FontSize="Large"
+                        Text="{Binding TiempoServicio}"/>
                 </Grid>
                 <ActivityIndicator
                     IsRunning="{Binding IsRunning}">

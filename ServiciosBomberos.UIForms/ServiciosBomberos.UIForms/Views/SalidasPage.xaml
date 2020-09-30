@@ -100,7 +100,7 @@
                                     Grid.Column="2"
                                     Orientation="Horizontal">
                                         <Label
-                                        Text="{i18n:Translate DayLbl}"/>
+                                        Text="{i18n:Translate InitLbl}"/>
                                         <Label
                                         Text="{Binding HoraSalida, StringFormat='{0:HH:mm}'}"/>
                                     </StackLayout>
