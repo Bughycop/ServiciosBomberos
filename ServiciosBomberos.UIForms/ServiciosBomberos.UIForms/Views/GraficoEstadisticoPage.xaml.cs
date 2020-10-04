@@ -15,7 +15,7 @@ namespace ServiciosBomberos.UIForms.Views
         public GraficoEstadisticoPage()
         {
             //Licencia
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjgwMzU1QDMxMzgyZTMxMmUzMExFSGhubEMwR2NTS0lMK1JuM1ZudmtuUjNPSkhlcnRYelhObS8xc0Z6aWs9");
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("XXXXXXX");
             
             InitializeComponent();
         }
